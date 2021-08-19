@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum Screen {
+    case main, history, gameEvent, phoneWallpaper, sixthCharacter, removeCache, settings
+}
+
 struct MenuItem {
     var title: String
+    var item: Screen
 }

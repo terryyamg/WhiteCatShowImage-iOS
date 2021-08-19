@@ -5,3 +5,11 @@
   Created by Terry Yang on 2020/7/11.
   Copyright © 2020 楊鎮齊. All rights reserved.
 */
+
+"menu_main_page" = "メインページ";
+"menu_history" = "レコードを閲覧する";
+"menu_game_event" = "Game Event";
+"menu_phone_wallpaper" = "携帯電話の壁紙";
+"menu_sixth_character" = "6th All Character(もっと写真)";
+"menu_remove_cache" = "キャッシュを削除する";
+"menu_settings" = "設定";

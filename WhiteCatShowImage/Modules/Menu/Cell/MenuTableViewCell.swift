@@ -21,8 +21,8 @@ class MenuTableViewCell: UITableViewCell, TableViewCellProtocol {
 
     }
 
-    func setupInfo(with menuItem: MenuItem) {
-        labTitle.text = menuItem.title
+    func setupInfo(with menuItem: String) {
+        labTitle.text = menuItem
     }
 
 }

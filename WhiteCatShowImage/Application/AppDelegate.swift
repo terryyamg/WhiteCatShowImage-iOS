@@ -7,25 +7,45 @@
 //
 
 import UIKit
+import SideMenu
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    var coordinator: MainCoordinator?
+    private var appCoordinator: AppCoordinator!
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        let narigationController = UINavigationController()
-        coordinator = MainCoordinator(narigationController: narigationController)
-        coordinator?.start()
-
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = narigationController
-        window?.makeKeyAndVisible()
+        setUpSideMenu()
+        
+        appCoordinator = AppCoordinator()
+        appCoordinator.start()
 
         return true
     }
 
+    private func setUpSideMenu() {
+        // Define the menus
+        guard let rootViewController = R.storyboard.menu.menuViewController() else { return }
+        let leftMenuNavigationController = SideMenuNavigationController(rootViewController: rootViewController)
+        SideMenuManager.default.leftMenuNavigationController = leftMenuNavigationController
+        leftMenuNavigationController.navigationBar.isHidden = true
+
+        let style = SideMenuPresentationStyle.menuSlideIn
+        style.backgroundColor = .black
+        style.presentingEndAlpha = 0.32
+        style.onTopShadowColor = .black
+        style.onTopShadowRadius = 4.0
+        style.onTopShadowOpacity = 0.2
+        style.onTopShadowOffset = CGSize(width: 2.0, height: 0.0)
+
+        var settings = SideMenuSettings()
+        settings.presentationStyle = style
+        settings.menuWidth = max(round(min((UIScreen.main.bounds.width), (UIScreen.main.bounds.height)) * 0.75), 240)
+        settings.statusBarEndAlpha = 0.0
+
+        leftMenuNavigationController.settings = settings
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

@@ -10,26 +10,35 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-protocol MenuViewModelInput {
-//    var langTrigger: Driver<Void> { get }
-}
+class MenuViewModel: ViewModel, ViewModelType {
 
-protocol MenuViewModelOutput {
-    var todoItems: Observable<[MenuItem]> { get }
-}
-
-protocol MenuViewModelType {
-    var inputs: MenuViewModelInput { get }
-    var outputs: MenuViewModelOutput { get }
-}
-
-class MenuViewModel: ViewModel, MenuViewModelType, MenuViewModelInput, MenuViewModelOutput {
-    private let items = BehaviorRelay<[MenuItem]>(value: [])
-
-    var todoItems: Observable<[MenuItem]> {
-        return items.asObservable()
+    struct Input {
+        let selection: Driver<MenuItem>
     }
 
-    var inputs: MenuViewModelInput { return self }
-    var outputs: MenuViewModelOutput { return self }
+    struct Output {
+        let todoItems: Observable<[MenuItem]>
+        let selectedEvent: Driver<MenuItem>
+    }
+    
+    // MARK: Private
+    private let items = Observable.just([
+        MenuItem(title: "menu_main_page".localized, item: .main),
+        MenuItem(title: "menu_history".localized, item: .history),
+        MenuItem(title: "menu_game_event".localized, item: .gameEvent),
+        MenuItem(title: "menu_phone_wallpaper".localized, item: .phoneWallpaper),
+        MenuItem(title: "menu_sixth_character".localized, item: .sixthCharacter),
+        MenuItem(title: "menu_remove_cache".localized, item: .removeCache),
+        MenuItem(title: "menu_settings".localized, item: .settings)
+    ])
+    
+    private let disposeBag = DisposeBag()
+    
+    let didSelectScreen = BehaviorSubject(value: Screen.main)
+    
+    func transform(input: Input) -> Output {
+        let selectedEvent = input.selection
+
+        return Output(todoItems: items.asObservable(), selectedEvent: selectedEvent)
+    }
 }

@@ -5,3 +5,11 @@
   Created by Terry Yang on 2020/7/11.
   Copyright © 2020 楊鎮齊. All rights reserved.
 */
+
+"menu_main_page" = "메인 페이지";
+"menu_history" = "역사";
+"menu_game_event" = "Game Event";
+"menu_phone_wallpaper" = "전화 벽지";
+"menu_sixth_character" = "여섯 번째 모든 캐릭터(더 많은 사진)";
+"menu_remove_cache" = "캐시 제거";
+"menu_settings" = "설정";

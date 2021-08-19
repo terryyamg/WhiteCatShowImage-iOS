@@ -5,3 +5,10 @@
   Created by Terry Yang on 2020/7/11.
   Copyright © 2020 楊鎮齊. All rights reserved.
 */
+
+"menu_history" = "History";
+"menu_game_event" = "Game Event";
+"menu_phone_wallpaper" = "Phone Wallpaper";
+"menu_sixth_character" = "6th All Character(More pictures)";
+"menu_remove_cache" = "Remove Cache";
+"menu_settings" = "Settings";

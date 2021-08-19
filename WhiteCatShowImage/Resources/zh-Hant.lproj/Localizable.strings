@@ -5,3 +5,12 @@
   Created by Terry Yang on 2020/7/11.
   Copyright © 2020 楊鎮齊. All rights reserved.
 */
+
+/* Menu */
+"menu_main_page" = "主頁";
+"menu_history" = "瀏覽紀錄";
+"menu_game_event" = "遊戲事件";
+"menu_phone_wallpaper" = "手機桌布";
+"menu_sixth_character" = "6周年全角色";
+"menu_remove_cache" = "清除快取";
+"menu_settings" = "設定";

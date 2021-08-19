@@ -9,32 +9,18 @@
 import Foundation
 import UIKit
 
-class MainCoordinator: Coordinator {
-    var childCoordinators: [Coordinator] = []
-
-    var narigationController: UINavigationController
-
-    init(narigationController: UINavigationController) {
-        self.narigationController = narigationController
+class MainCoordinator: BaseCoordinator {
+    private let viewModel: MainViewModel
+    
+    init(viewModel: MainViewModel) {
+        self.viewModel = viewModel
     }
 
-    func start() {
+    override func start() {
         guard let vc = R.storyboard.main.mainViewController() else { return }
-        vc.coordinator = self
-        narigationController.pushViewController(vc, animated: false)
-    }
-
-    func pushMenu() {
-        let child = MenuCoordinator(narigationController: narigationController)
-        child.parentCoordinator = self
-        childCoordinators.append(child)
-        child.start()
-    }
-
-    func childDidFinish(_ child: Coordinator?) {
-        for (index, coordinator) in childCoordinators.enumerated() where coordinator === child {
-            childCoordinators.remove(at: index)
-        }
+        vc.viewModel = viewModel
+        
+        navigationController.viewControllers = [vc]
     }
 
 }

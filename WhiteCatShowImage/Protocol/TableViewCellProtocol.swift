@@ -11,7 +11,6 @@ import UIKit
 protocol TableViewCellProtocol {
     static var nib: UINib { get }
     static var identifier: String { get }
-    static var suggestedHeight: CGFloat { get }
 }
 
 extension TableViewCellProtocol {
@@ -21,9 +20,5 @@ extension TableViewCellProtocol {
 
     static var identifier: String {
         return String(describing: self)
-    }
-
-    static var suggestedHeight: CGFloat {
-        return 32
     }
 }

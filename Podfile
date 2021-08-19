@@ -30,6 +30,7 @@ target 'WhiteCatShowImage' do
   pod 'Hero' # https://github.com/HeroTransitions/Hero
   pod 'Spring', :git => 'https://github.com/MengTo/Spring.git' # https://github.com/MengTo/Spring
   pod 'lottie-ios' # https://github.com/airbnb/lottie-ios
+  pod 'SideMenu', '~> 6.0' # https://github.com/jonkykong/SideMenu
 
   # Keyboard
   pod 'IQKeyboardManagerSwift'

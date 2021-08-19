@@ -6,25 +6,54 @@
 //  Copyright © 2021 楊鎮齊. All rights reserved.
 //
 
-import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
+import SideMenu
 
-class MenuCoordinator: Coordinator {
-    weak var parentCoordinator: MainCoordinator?
-    var childCoordinators: [Coordinator] = []
-    var narigationController: UINavigationController
+class MenuCoordinator: BaseCoordinator {
+    private let disposeBag = DisposeBag()
+    private let menuViewModel: MenuViewModel
 
-    init(narigationController: UINavigationController) {
-        self.narigationController = narigationController
+    init(menuViewModel: MenuViewModel) {
+        self.menuViewModel = menuViewModel
     }
 
-    func start() {
-        guard let vc = R.storyboard.menu.menuViewController()  else { return }
-        vc.coordinator = self
-        narigationController.pushViewController(vc, animated: true)
+    override func start() {
+        menuViewModel.didSelectScreen
+            .distinctUntilChanged()
+            .subscribe(onNext: { [weak self] screen in
+                        self?.selectScreen(screen)
+            })
+            .disposed(by: disposeBag)
+        
+        let drawerMenu = SideMenuManager.default.leftMenuNavigationController
+        let menuViewController = drawerMenu?.topViewController as? MenuViewController
+        menuViewController?.viewModel = menuViewModel
     }
 
-    func didFinishMenu() {
-        parentCoordinator?.childDidFinish(self)
+    func selectScreen(_ screen: Screen) {
+        switch screen {
+        case .main:
+            removeChildCoordinators()
+            let coordinator = MainCoordinator(viewModel: MainViewModel())
+            coordinator.navigationController = navigationController
+            start(coordinator: coordinator)
+        case .history:
+            break
+        case .gameEvent:
+            break
+        case .phoneWallpaper:
+            break
+        case .sixthCharacter:
+            break
+        case .removeCache:
+            break
+        case .settings:
+            removeChildCoordinators()
+            let coordinator = SettingsCoordinator(viewModel: SettingsViewModel())
+            coordinator.navigationController = navigationController
+            start(coordinator: coordinator)
+        }
     }
 }

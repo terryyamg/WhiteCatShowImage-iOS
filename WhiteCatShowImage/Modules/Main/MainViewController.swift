@@ -12,12 +12,10 @@ import RxCocoa
 import RxSwift
 import Collections
 
-class MainViewController: UIViewController {
+class MainViewController: ViewControllerWithSideMenu {
 
-    @IBOutlet weak var btnMenu: UIButton!
     @IBOutlet weak var viewBottomPager: FSPagerView!
 
-    weak var coordinator: MainCoordinator?
     let disposeBag = DisposeBag()
     var viewModel: ViewModel?
     var listCareer: OrderedSet<UIImage> = [#imageLiteral(resourceName: "ic_sw.pdf"), #imageLiteral(resourceName: "ic_nac"), #imageLiteral(resourceName: "ic_war"), #imageLiteral(resourceName: "ic_lan"), #imageLiteral(resourceName: "ic_ar"), #imageLiteral(resourceName: "ic_mag"), #imageLiteral(resourceName: "ic_tsw"), #imageLiteral(resourceName: "ic_dr"), #imageLiteral(resourceName: "ic_var"), #imageLiteral(resourceName: "ic_bs"), #imageLiteral(resourceName: "ic_sab")]
@@ -33,7 +31,6 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = MainViewModel()
         bindViewModel()
         initBottomPager()
     }
@@ -41,11 +38,10 @@ class MainViewController: UIViewController {
     func bindViewModel() {
 //        guard let viewModel = viewModel as? MainViewModel else { return }
 
-        btnMenu.rx.tap
-            .subscribe(onNext: { [weak self] () in
-                print("🏀")
-                self?.coordinator?.pushMenu()
-            }).disposed(by: disposeBag)
+//        btnMenu.rx.tap
+//            .subscribe(onNext: { [weak self] () in
+//                self?.coordinator?.pushMenu()
+//            }).disposed(by: disposeBag)
 
 //        let input = MainViewModel.Input(menuTrigger: btnMenu.rx.tap.asDriver())
 //        let output = viewModel.transform(input: input)
