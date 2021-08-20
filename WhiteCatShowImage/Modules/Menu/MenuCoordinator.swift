@@ -47,8 +47,6 @@ class MenuCoordinator: BaseCoordinator {
             break
         case .sixthCharacter:
             break
-        case .removeCache:
-            break
         case .settings:
             removeChildCoordinators()
             let coordinator = SettingsCoordinator(viewModel: SettingsViewModel())

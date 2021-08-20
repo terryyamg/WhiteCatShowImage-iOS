@@ -42,6 +42,9 @@
 		C86974DD26CCD87F00D79842 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86974DC26CCD87F00D79842 /* BaseNavigationController.swift */; };
 		C86974E026CCD9B500D79842 /* ViewControllerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86974DF26CCD9B500D79842 /* ViewControllerUtils.swift */; };
 		C86974E226CCF7F200D79842 /* ViewControllerWithSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86974E126CCF7F200D79842 /* ViewControllerWithSideMenu.swift */; };
+		C86ECBFE26CF576A004D7A74 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86ECBFC26CF576A004D7A74 /* SettingsTableViewCell.swift */; };
+		C86ECBFF26CF576A004D7A74 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C86ECBFD26CF576A004D7A74 /* SettingsTableViewCell.xib */; };
+		C86ECC0126CF5D8D004D7A74 /* SettingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86ECC0026CF5D8D004D7A74 /* SettingItem.swift */; };
 		C8785A7426CA131E0095D86E /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8785A7326CA131E0095D86E /* SettingsCoordinator.swift */; };
 		C8873FD526C679F5005B5874 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8873FD426C679F5005B5874 /* SettingsViewController.swift */; };
 		C8873FD726C67A14005B5874 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8873FD626C67A14005B5874 /* SettingsViewModel.swift */; };
@@ -109,6 +112,9 @@
 		C86974DC26CCD87F00D79842 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		C86974DF26CCD9B500D79842 /* ViewControllerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerUtils.swift; sourceTree = "<group>"; };
 		C86974E126CCF7F200D79842 /* ViewControllerWithSideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerWithSideMenu.swift; sourceTree = "<group>"; };
+		C86ECBFC26CF576A004D7A74 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		C86ECBFD26CF576A004D7A74 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
+		C86ECC0026CF5D8D004D7A74 /* SettingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItem.swift; sourceTree = "<group>"; };
 		C8785A7326CA131E0095D86E /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		C8873FD426C679F5005B5874 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C8873FD626C67A14005B5874 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -245,6 +251,7 @@
 			children = (
 				883CD87624B98F2600017080 /* SingletonVariable.swift */,
 				883DD0EB26342C92004A3EFD /* MenuItem.swift */,
+				C86ECC0026CF5D8D004D7A74 /* SettingItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -365,6 +372,8 @@
 		C8785A7526CA13590095D86E /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				C86ECBFC26CF576A004D7A74 /* SettingsTableViewCell.swift */,
+				C86ECBFD26CF576A004D7A74 /* SettingsTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -503,6 +512,7 @@
 				883CD87A24B9925F00017080 /* Localizable.strings in Resources */,
 				883DD0DE26341A52004A3EFD /* MenuTableViewCell.xib in Resources */,
 				886F612E247916700074BB0A /* .swiftlint.yml in Resources */,
+				C86ECBFF26CF576A004D7A74 /* SettingsTableViewCell.xib in Resources */,
 				C8873FD926C67C9A005B5874 /* Settings.storyboard in Resources */,
 				889507462311482100570907 /* LaunchScreen.storyboard in Resources */,
 				88309567262BEE7D00AD40B0 /* Menu.storyboard in Resources */,
@@ -610,6 +620,7 @@
 			files = (
 				8830955C262BE1A200AD40B0 /* MainCoordinator.swift in Sources */,
 				886F61262478E2250074BB0A /* ExtensionUIView.swift in Sources */,
+				C86ECBFE26CF576A004D7A74 /* SettingsTableViewCell.swift in Sources */,
 				C8873FD526C679F5005B5874 /* SettingsViewController.swift in Sources */,
 				883CD88524B99F5900017080 /* MenuViewModel.swift in Sources */,
 				C86974E026CCD9B500D79842 /* ViewControllerUtils.swift in Sources */,
@@ -628,6 +639,7 @@
 				883CD88324B99F4C00017080 /* MenuViewController.swift in Sources */,
 				883CD87524B98E6500017080 /* ExtensionString.swift in Sources */,
 				883DD0E72634243A004A3EFD /* TableViewCellProtocol.swift in Sources */,
+				C86ECC0126CF5D8D004D7A74 /* SettingItem.swift in Sources */,
 				886F612B2479113B0074BB0A /* MainViewModel.swift in Sources */,
 				883DD0DD26341A52004A3EFD /* MenuTableViewCell.swift in Sources */,
 				884B26B5249DE6140028E6D1 /* ViewModelType.swift in Sources */,

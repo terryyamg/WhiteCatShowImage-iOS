@@ -9,7 +9,7 @@
 import Foundation
 
 enum Screen {
-    case main, history, gameEvent, phoneWallpaper, sixthCharacter, removeCache, settings
+    case main, history, gameEvent, phoneWallpaper, sixthCharacter, settings
 }
 
 struct MenuItem {

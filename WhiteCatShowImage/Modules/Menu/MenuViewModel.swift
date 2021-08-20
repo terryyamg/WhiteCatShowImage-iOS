@@ -28,7 +28,6 @@ class MenuViewModel: ViewModel, ViewModelType {
         MenuItem(title: "menu_game_event".localized, item: .gameEvent),
         MenuItem(title: "menu_phone_wallpaper".localized, item: .phoneWallpaper),
         MenuItem(title: "menu_sixth_character".localized, item: .sixthCharacter),
-        MenuItem(title: "menu_remove_cache".localized, item: .removeCache),
         MenuItem(title: "menu_settings".localized, item: .settings)
     ])
     

@@ -6,10 +6,14 @@
   Copyright © 2020 楊鎮齊. All rights reserved.
 */
 
+/* Menu */
 "menu_main_page" = "Main Page";
 "menu_history" = "History";
 "menu_game_event" = "Game Event";
 "menu_phone_wallpaper" = "Phone Wallpaper";
 "menu_sixth_character" = "6th All Character(More pictures)";
-"menu_remove_cache" = "Remove Cache";
 "menu_settings" = "Settings";
+
+/* Settings */
+"settings_language" = "Language";
+"settings_remove_cache" = "Remove Cache";

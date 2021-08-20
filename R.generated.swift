@@ -268,10 +268,12 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 1 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 2 nibs.
   struct nib {
     /// Nib `MenuTableViewCell`.
     static let menuTableViewCell = _R.nib._MenuTableViewCell()
+    /// Nib `SettingsTableViewCell`.
+    static let settingsTableViewCell = _R.nib._SettingsTableViewCell()
 
     #if os(iOS) || os(tvOS)
     /// `UINib(name: "MenuTableViewCell", in: bundle)`
@@ -281,8 +283,20 @@ struct R: Rswift.Validatable {
     }
     #endif
 
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "SettingsTableViewCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.settingsTableViewCell) instead")
+    static func settingsTableViewCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.settingsTableViewCell)
+    }
+    #endif
+
     static func menuTableViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> MenuTableViewCell? {
       return R.nib.menuTableViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? MenuTableViewCell
+    }
+
+    static func settingsTableViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> SettingsTableViewCell? {
+      return R.nib.settingsTableViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SettingsTableViewCell
     }
 
     fileprivate init() {}
@@ -290,7 +304,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 7 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 8 localization keys.
     struct localizable {
       /// en translation: 6th All Character(More pictures)
       ///
@@ -304,6 +318,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: en, ja, ko, zh-Hant
       static let menu_history = Rswift.StringResource(key: "menu_history", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja", "ko", "zh-Hant"], comment: nil)
+      /// en translation: Language
+      ///
+      /// Locales: en, ja, ko, zh-Hant
+      static let settings_language = Rswift.StringResource(key: "settings_language", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja", "ko", "zh-Hant"], comment: nil)
       /// en translation: Main Page
       ///
       /// Locales: en, ja, ko, zh-Hant
@@ -315,7 +333,7 @@ struct R: Rswift.Validatable {
       /// en translation: Remove Cache
       ///
       /// Locales: en, ja, ko, zh-Hant
-      static let menu_remove_cache = Rswift.StringResource(key: "menu_remove_cache", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja", "ko", "zh-Hant"], comment: nil)
+      static let settings_remove_cache = Rswift.StringResource(key: "settings_remove_cache", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ja", "ko", "zh-Hant"], comment: nil)
       /// en translation: Settings
       ///
       /// Locales: en, ja, ko, zh-Hant
@@ -366,6 +384,21 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("menu_history", bundle: bundle, comment: "")
       }
 
+      /// en translation: Language
+      ///
+      /// Locales: en, ja, ko, zh-Hant
+      static func settings_language(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("settings_language", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "settings_language"
+        }
+
+        return NSLocalizedString("settings_language", bundle: bundle, comment: "")
+      }
+
       /// en translation: Main Page
       ///
       /// Locales: en, ja, ko, zh-Hant
@@ -399,16 +432,16 @@ struct R: Rswift.Validatable {
       /// en translation: Remove Cache
       ///
       /// Locales: en, ja, ko, zh-Hant
-      static func menu_remove_cache(preferredLanguages: [String]? = nil) -> String {
+      static func settings_remove_cache(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("menu_remove_cache", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("settings_remove_cache", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "menu_remove_cache"
+          return "settings_remove_cache"
         }
 
-        return NSLocalizedString("menu_remove_cache", bundle: bundle, comment: "")
+        return NSLocalizedString("settings_remove_cache", bundle: bundle, comment: "")
       }
 
       /// en translation: Settings
@@ -460,6 +493,17 @@ struct _R: Rswift.Validatable {
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> MenuTableViewCell? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? MenuTableViewCell
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _SettingsTableViewCell: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "SettingsTableViewCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> SettingsTableViewCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SettingsTableViewCell
       }
 
       fileprivate init() {}
