@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 class MenuViewController: UIViewController {
     
@@ -16,11 +17,13 @@ class MenuViewController: UIViewController {
     weak var coordinator: MenuCoordinator?
     var viewModel: ViewModel?
     private var disposeBag: DisposeBag = DisposeBag()
+    let languageChanged = BehaviorRelay<Void>(value: ())
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initTableView()
         bindViewModel()
+        setNotificationCenter()
     }
     
     func initTableView() {
@@ -38,17 +41,25 @@ class MenuViewController: UIViewController {
             .drive(tableView.rx.items(
                     cellIdentifier: MenuTableViewCell.identifier,
                     cellType: MenuTableViewCell.self)) { _, menuItem, cell in
-                cell.setupInfo(with: menuItem.title)
+                cell.setupInfo(with: menuItem.screen.localized)
             }
             .disposed(by: disposeBag)
         
         outputs.selectedEvent.drive(onNext: { [weak self] (menuItem) in
             guard let self = self else { return }
             self.dismiss(animated: true) {
-                viewModel.didSelectScreen.onNext(menuItem.item)
+                viewModel.didSelectScreen.onNext(menuItem.screen)
             }
         })
         .disposed(by: disposeBag)
         
+    }
+    
+    func setNotificationCenter() {
+        NotificationCenter.default
+            .rx.notification(Notification.Name(SingletonVariable.sharedInstance().changeLang))
+            .subscribe { [weak self] (event) in
+                self?.tableView.reloadData()
+            }.disposed(by: disposeBag)
     }
 }

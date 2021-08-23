@@ -49,6 +49,7 @@
 		C8873FD526C679F5005B5874 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8873FD426C679F5005B5874 /* SettingsViewController.swift */; };
 		C8873FD726C67A14005B5874 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8873FD626C67A14005B5874 /* SettingsViewModel.swift */; };
 		C8873FD926C67C9A005B5874 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8873FD826C67C9A005B5874 /* Settings.storyboard */; };
+		C88EE69026D33C440057E8FE /* ExtensionUIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88EE68F26D33C440057E8FE /* ExtensionUIAlertController.swift */; };
 		D4292BA524EB85151B81D276 /* Pods_WhiteCatShowImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0A14F3816786229386C4DB /* Pods_WhiteCatShowImage.framework */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +120,7 @@
 		C8873FD426C679F5005B5874 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C8873FD626C67A14005B5874 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		C8873FD826C67C9A005B5874 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		C88EE68F26D33C440057E8FE /* ExtensionUIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIAlertController.swift; sourceTree = "<group>"; };
 		CE0A14F3816786229386C4DB /* Pods_WhiteCatShowImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhiteCatShowImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE76F173DAD474230D0181D3 /* Pods-WhiteCatShowImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhiteCatShowImage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhiteCatShowImage/Pods-WhiteCatShowImage.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -242,6 +244,7 @@
 				886F61252478E2250074BB0A /* ExtensionUIView.swift */,
 				886F61272478E2F10074BB0A /* ExtensionDate.swift */,
 				883CD87424B98E6500017080 /* ExtensionString.swift */,
+				C88EE68F26D33C440057E8FE /* ExtensionUIAlertController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -641,6 +644,7 @@
 				883DD0E72634243A004A3EFD /* TableViewCellProtocol.swift in Sources */,
 				C86ECC0126CF5D8D004D7A74 /* SettingItem.swift in Sources */,
 				886F612B2479113B0074BB0A /* MainViewModel.swift in Sources */,
+				C88EE69026D33C440057E8FE /* ExtensionUIAlertController.swift in Sources */,
 				883DD0DD26341A52004A3EFD /* MenuTableViewCell.swift in Sources */,
 				884B26B5249DE6140028E6D1 /* ViewModelType.swift in Sources */,
 				C8873FD726C67A14005B5874 /* SettingsViewModel.swift in Sources */,

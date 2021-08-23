@@ -23,12 +23,12 @@ class MenuViewModel: ViewModel, ViewModelType {
     
     // MARK: Private
     private let items = Observable.just([
-        MenuItem(title: "menu_main_page".localized, item: .main),
-        MenuItem(title: "menu_history".localized, item: .history),
-        MenuItem(title: "menu_game_event".localized, item: .gameEvent),
-        MenuItem(title: "menu_phone_wallpaper".localized, item: .phoneWallpaper),
-        MenuItem(title: "menu_sixth_character".localized, item: .sixthCharacter),
-        MenuItem(title: "menu_settings".localized, item: .settings)
+        MenuItem(screen: .main),
+        MenuItem(screen: .history),
+        MenuItem(screen: .gameEvent),
+        MenuItem(screen: .phoneWallpaper),
+        MenuItem(screen: .sixthCharacter),
+        MenuItem(screen: .settings)
     ])
     
     private let disposeBag = DisposeBag()

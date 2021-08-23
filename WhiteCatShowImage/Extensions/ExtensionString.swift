@@ -8,12 +8,20 @@
 
 import UIKit
 
-enum LanguageType: String {
+enum LanguageType: String, CaseIterable {
     case english = "en"
     case traditional = "zh-Hant"
-    case simplified = "zh-Hans"
     case japanese = "ja"
     case korean = "ko"
+    
+    var title: String {
+        switch self {
+        case .english: return "common_english".localized
+        case .traditional: return "common_traditional".localized
+        case .japanese: return "common_japanese".localized
+        case .korean: return "common_korean".localized
+        }
+    }
 }
 
 extension String {
@@ -22,7 +30,7 @@ extension String {
     }
 
     var localized: String {
-        // English: Base, Japanese: ja, Traditional: zh-Hant, Simplified: zh-Hans
+        // English: Base, Japanese: ja, Traditional: zh-Hant
         if UserDefaults.standard.string(forKey: SingletonVariable.sharedInstance().userLang) == nil {
             UserDefaults.standard.set(UserDefaults.standard.string(forKey: SingletonVariable.sharedInstance().userLang), forKey: SingletonVariable.sharedInstance().userLang)
         }
@@ -31,8 +39,6 @@ extension String {
         switch lang {
         case LanguageType.traditional.rawValue:
             lang = "zh-Hant"
-        case LanguageType.simplified.rawValue:
-            lang = "zh-Hans"
         case LanguageType.english.rawValue:
             lang = "en"
         case LanguageType.japanese.rawValue:

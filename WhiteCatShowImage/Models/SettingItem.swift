@@ -8,8 +8,20 @@
 
 import UIKit
 
+enum SettingType {
+    case language
+    case removeCache
+    
+    var localized: String {
+        switch self {
+        case .language: return "settings_language".localized
+        case .removeCache: return "settings_remove_cache".localized
+        }
+    }
+}
+
 struct SettingItem {
     var image: UIImage?
     var imageColor: UIColor?
-    var title: String
+    var type: SettingType
 }

@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 class SettingsViewController: ViewControllerWithSideMenu {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     weak var coordinator: SettingsCoordinator?
@@ -31,7 +31,7 @@ class SettingsViewController: ViewControllerWithSideMenu {
     func bindViewModel() {
         guard let viewModel = viewModel as? SettingsViewModel else { return }
         
-        let inputs = SettingsViewModel.Input(selection: tableView.rx.modelSelected(MenuItem.self).asDriver())
+        let inputs = SettingsViewModel.Input(selection: tableView.rx.modelSelected(SettingItem.self).asDriver())
         let outputs = viewModel.transform(input: inputs)
         
         outputs.todoItems
@@ -41,6 +41,34 @@ class SettingsViewController: ViewControllerWithSideMenu {
                     cellType: SettingsTableViewCell.self)) { _, item, cell in
                 cell.setupInfo(with: item)
             }
+            .disposed(by: disposeBag)
+        
+        outputs.selectedEvent.drive(onNext: { [weak self] (settingItem) in
+            guard let self = self else { return }
+            switch settingItem.type {
+            case .language:
+                self.showSelectedAlert()
+            case .removeCache:
+                break
+            }
+        })
+        .disposed(by: disposeBag)
+    }
+    
+    private func showSelectedAlert() {
+        var actions: [UIAlertController.AlertAction] = []
+        
+        LanguageType.allCases.forEach { type in
+            actions.append(.action(title: type.title))
+        }
+
+        UIAlertController
+            .present(in: self, title: "settings_switch_language".localized, message: nil, style: .alert, actions: actions)
+            .subscribe(onNext: { index in
+                UserDefaults.standard.set(LanguageType.allCases[index].rawValue, forKey: SingletonVariable.sharedInstance().userLang)
+                self.tableView.reloadData()
+                NotificationCenter.default.post(name: Notification.Name(SingletonVariable.sharedInstance().changeLang), object: nil)
+            })
             .disposed(by: disposeBag)
     }
 }

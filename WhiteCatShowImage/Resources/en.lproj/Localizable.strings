@@ -6,6 +6,11 @@
   Copyright © 2020 楊鎮齊. All rights reserved.
 */
 
+/* Common */
+"common_english" = "English";
+"common_traditional" = "Traditional";
+"common_japanese" = "Japanese";
+"common_korean" = "Korean";
 /* Menu */
 "menu_main_page" = "Main Page";
 "menu_history" = "History";
@@ -16,4 +21,5 @@
 
 /* Settings */
 "settings_language" = "Language";
+"settings_switch_language" = "Switch Language";
 "settings_remove_cache" = "Remove Cache";

@@ -25,7 +25,7 @@ class SettingsTableViewCell: UITableViewCell, TableViewCellProtocol {
     func setupInfo(with item: SettingItem) {
         ivSettings.image = item.image
         ivSettings.tintColor = item.imageColor
-        labSettings.text = item.title
+        labSettings.text = item.type.localized
     }
     
 }

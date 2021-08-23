@@ -22,5 +22,6 @@ class SingletonVariable {
     /* string */
     // user about
     var userLang: String = "userLang"
+    var changeLang: String = "changeLang"
 
 }
