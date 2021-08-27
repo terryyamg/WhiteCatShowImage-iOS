@@ -11,6 +11,7 @@ import RxSwift
 
 class AppCoordinator: BaseCoordinator {
     private var window = UIWindow(frame: UIScreen.main.bounds)
+    private let dependency = AppDependency()
     
     override func start() {
         window.makeKeyAndVisible()
@@ -18,6 +19,7 @@ class AppCoordinator: BaseCoordinator {
         removeChildCoordinators()
         
         let coordinator = MenuCoordinator(menuViewModel: MenuViewModel())
+        coordinator.dependency = dependency
         coordinator.navigationController = BaseNavigationController()
         start(coordinator: coordinator)
         

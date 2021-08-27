@@ -9,45 +9,71 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import SwiftSoup
 
-protocol MainViewModelInput {
-    var menuTrigger: PublishSubject<Void> { get }
-}
+class MainViewModel: ViewModel, ViewModelType {
+    struct Input {
+        let headerRefresh: Observable<Void>
+        let selection: Driver<RoleData>
+    }
 
-protocol MainViewModelOutput {
-    var showMenu: Driver<Void> { get }
-}
+    struct Output {
+        let todoItems: Observable<[RoleData]>
+        let selectedEvent: Driver<RoleData>
+    }
 
-protocol MainViewModelType {
-    var inputs: MainViewModelInput { get }
-    var outputs: MainViewModelOutput { get }
-}
+    // MARK: Private
+    private var items = BehaviorRelay<[RoleData]>(value: [])
+    private var disposeBag: DisposeBag = DisposeBag()
+    private let networkManager: NetworkManagerProtocol?
+    
+    init(networkManager: NetworkManagerProtocol) {
+        self.networkManager = networkManager
+    }
+    
+    func transform(input: Input) -> Output {
+        let selectedEvent = input.selection
+        
+        input.headerRefresh.flatMapLatest({ [weak self] () -> Observable<[RoleData]> in
+            guard let self = self else { return Observable.just([]) }
+            return Observable.create { subscriber in
+                self.networkManager?.getHtmlFromURL(urlString: "https://gamewith.jp/shironeko/article/show/4040",
+                                                    completionHandler: { html in
+                    do {
+                        var roleList: [RoleData] = []
+                        let doc: Document = try SwiftSoup.parse(html)
+                        try Career.allCases.forEach { career in
+                            let elementsName = try doc.select("tr[class^=w-idb-element  \(career.lowercaseString)]").select("a")
+                            try elementsName.forEach { element in
+                                let name = try element.text()
+                                let image = try element.select("img").attr("data-original")
+                                let toUrl = try element.attr("href")
+                                let roleData = RoleData(name: name,
+                                                        image: image,
+                                                        career: career,
+                                                        toUrl: toUrl)
+                                roleList.append(roleData)
+                            }
+                        }
+                        subscriber.onNext(roleList)
+                        subscriber.onCompleted()
+                        
+                    } catch Exception.Error(let type, let message) {
+                        print(type)
+                        print(message)
+                        subscriber.onCompleted()
+                    } catch {
+                        print("error")
+                        subscriber.onCompleted()
+                    }
+                })
+                return Disposables.create()
+            }
+        })
+        .subscribe(onNext: { (item) in
+            self.items.accept(item)
+        }).disposed(by: disposeBag)
 
-class MainViewModel: ViewModel {
-
-//    private let loading = BehaviorRelay<Bool>(value: false)
-//
-//    // Input
-//    var menuTrigger: PublishSubject<Void> = PublishSubject<Void>()
-//
-//    // Output
-//    var showMenu: Driver<Void> {
-//        return menuTrigger.asDriver()
-//    }
-//
-//    var inputs: MainViewModelInput { return self }
-//    var outputs: MainViewModelOutput { return self }
-
-//    struct Input {
-//        let menuTrigger: Driver<Void>
-//    }
-//
-//    struct Output {
-//        let showMenu: Driver<Void>
-//    }
-//
-//    func transform(input: Input) -> Output {
-//        let showMenu = input.menuTrigger.asDriver()
-//        return Output(showMenu: showMenu)
-//    }
+        return Output(todoItems: items.asObservable(), selectedEvent: selectedEvent)
+    }
 }

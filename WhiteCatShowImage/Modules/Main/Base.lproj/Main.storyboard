@@ -20,6 +20,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="snE-Yt-CAn">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TvE-Wi-q4g">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="728"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N4c-KS-8xL" customClass="FSPagerView" customModule="FSPagerView">
                                         <rect key="frame" x="0.0" y="728" width="414" height="90"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -27,19 +31,15 @@
                                             <constraint firstAttribute="height" constant="90" id="cW8-T7-dXI"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello world" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LwQ-Wm-kfT">
-                                        <rect key="frame" x="164" y="398.5" width="86" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="LwQ-Wm-kfT" firstAttribute="centerY" secondItem="snE-Yt-CAn" secondAttribute="centerY" id="NA8-Zl-Ite"/>
+                                    <constraint firstItem="TvE-Wi-q4g" firstAttribute="top" secondItem="snE-Yt-CAn" secondAttribute="top" id="3ZE-qf-RUZ"/>
+                                    <constraint firstItem="TvE-Wi-q4g" firstAttribute="leading" secondItem="snE-Yt-CAn" secondAttribute="leading" id="ENm-kA-dMz"/>
                                     <constraint firstItem="N4c-KS-8xL" firstAttribute="leading" secondItem="snE-Yt-CAn" secondAttribute="leading" id="ZuX-sW-hHU"/>
-                                    <constraint firstItem="LwQ-Wm-kfT" firstAttribute="centerX" secondItem="snE-Yt-CAn" secondAttribute="centerX" id="aav-oS-Dcb"/>
                                     <constraint firstAttribute="trailing" secondItem="N4c-KS-8xL" secondAttribute="trailing" id="f0E-hF-kiF"/>
+                                    <constraint firstItem="N4c-KS-8xL" firstAttribute="top" secondItem="TvE-Wi-q4g" secondAttribute="bottom" id="mqR-re-Rsa"/>
+                                    <constraint firstAttribute="trailing" secondItem="TvE-Wi-q4g" secondAttribute="trailing" id="mth-Lb-uhm"/>
                                     <constraint firstAttribute="bottom" secondItem="N4c-KS-8xL" secondAttribute="bottom" id="syT-UV-DpX"/>
                                 </constraints>
                             </view>
@@ -54,6 +54,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="tableView" destination="TvE-Wi-q4g" id="zTo-k1-UF8"/>
                         <outlet property="viewBottomPager" destination="N4c-KS-8xL" id="t7U-4A-aBb"/>
                     </connections>
                 </viewController>

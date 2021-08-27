@@ -50,6 +50,11 @@
 		C8873FD726C67A14005B5874 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8873FD626C67A14005B5874 /* SettingsViewModel.swift */; };
 		C8873FD926C67C9A005B5874 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8873FD826C67C9A005B5874 /* Settings.storyboard */; };
 		C88EE69026D33C440057E8FE /* ExtensionUIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88EE68F26D33C440057E8FE /* ExtensionUIAlertController.swift */; };
+		C88EE69426D39D1C0057E8FE /* RoleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88EE69226D39D1C0057E8FE /* RoleTableViewCell.swift */; };
+		C88EE69526D39D1C0057E8FE /* RoleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C88EE69326D39D1C0057E8FE /* RoleTableViewCell.xib */; };
+		C88EE69726D39E720057E8FE /* RoleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88EE69626D39E720057E8FE /* RoleData.swift */; };
+		C8B7A0D226D783D8004CA71C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B7A0D126D783D8004CA71C /* NetworkManager.swift */; };
+		C8B7A0D426D79171004CA71C /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B7A0D326D79171004CA71C /* AppDependency.swift */; };
 		D4292BA524EB85151B81D276 /* Pods_WhiteCatShowImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0A14F3816786229386C4DB /* Pods_WhiteCatShowImage.framework */; };
 /* End PBXBuildFile section */
 
@@ -121,6 +126,11 @@
 		C8873FD626C67A14005B5874 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		C8873FD826C67C9A005B5874 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		C88EE68F26D33C440057E8FE /* ExtensionUIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIAlertController.swift; sourceTree = "<group>"; };
+		C88EE69226D39D1C0057E8FE /* RoleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleTableViewCell.swift; sourceTree = "<group>"; };
+		C88EE69326D39D1C0057E8FE /* RoleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoleTableViewCell.xib; sourceTree = "<group>"; };
+		C88EE69626D39E720057E8FE /* RoleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleData.swift; sourceTree = "<group>"; };
+		C8B7A0D126D783D8004CA71C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		C8B7A0D326D79171004CA71C /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
 		CE0A14F3816786229386C4DB /* Pods_WhiteCatShowImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhiteCatShowImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE76F173DAD474230D0181D3 /* Pods-WhiteCatShowImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhiteCatShowImage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhiteCatShowImage/Pods-WhiteCatShowImage.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -233,6 +243,7 @@
 			children = (
 				C86974D926CCD62C00D79842 /* AppCoordinator.swift */,
 				8895073B2311481F00570907 /* AppDelegate.swift */,
+				C8B7A0D326D79171004CA71C /* AppDependency.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -255,6 +266,7 @@
 				883CD87624B98F2600017080 /* SingletonVariable.swift */,
 				883DD0EB26342C92004A3EFD /* MenuItem.swift */,
 				C86ECC0026CF5D8D004D7A74 /* SettingItem.swift */,
+				C88EE69626D39E720057E8FE /* RoleData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -271,16 +283,10 @@
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		886F61202478DD320074BB0A /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Networking;
-			sourceTree = "<group>";
-		};
 		886F6129247911200074BB0A /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				C88EE69126D39B370057E8FE /* Cell */,
 				8830955B262BE1A200AD40B0 /* MainCoordinator.swift */,
 				8895073D2311481F00570907 /* MainViewController.swift */,
 				886F612A2479113B0074BB0A /* MainViewModel.swift */,
@@ -314,15 +320,15 @@
 		8895073A2311481F00570907 /* WhiteCatShowImage */ = {
 			isa = PBXGroup;
 			children = (
+				886F611C2478DCC40074BB0A /* Application */,
 				C86974DE26CCD9AB00D79842 /* Utils */,
 				883DD0E5263423AA004A3EFD /* Protocol */,
 				8830954D262BDCC600AD40B0 /* Coordinator */,
-				886F611C2478DCC40074BB0A /* Application */,
 				886F611D2478DCE50074BB0A /* Extensions */,
 				884B26B1249DDF610028E6D1 /* Common */,
 				886F611E2478DD0E0074BB0A /* Models */,
 				886F611F2478DD1D0074BB0A /* Modules */,
-				886F61202478DD320074BB0A /* Networking */,
+				C8C733B826D4A3F4001D9282 /* Networking */,
 				889507442311482100570907 /* LaunchScreen.storyboard */,
 				886F61172478D26B0074BB0A /* Resources */,
 			);
@@ -391,6 +397,23 @@
 				C8873FD826C67C9A005B5874 /* Settings.storyboard */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		C88EE69126D39B370057E8FE /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C88EE69226D39D1C0057E8FE /* RoleTableViewCell.swift */,
+				C88EE69326D39D1C0057E8FE /* RoleTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C8C733B826D4A3F4001D9282 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				C8B7A0D126D783D8004CA71C /* NetworkManager.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -513,6 +536,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				883CD87A24B9925F00017080 /* Localizable.strings in Resources */,
+				C88EE69526D39D1C0057E8FE /* RoleTableViewCell.xib in Resources */,
 				883DD0DE26341A52004A3EFD /* MenuTableViewCell.xib in Resources */,
 				886F612E247916700074BB0A /* .swiftlint.yml in Resources */,
 				C86ECBFF26CF576A004D7A74 /* SettingsTableViewCell.xib in Resources */,
@@ -621,12 +645,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8B7A0D426D79171004CA71C /* AppDependency.swift in Sources */,
 				8830955C262BE1A200AD40B0 /* MainCoordinator.swift in Sources */,
 				886F61262478E2250074BB0A /* ExtensionUIView.swift in Sources */,
 				C86ECBFE26CF576A004D7A74 /* SettingsTableViewCell.swift in Sources */,
 				C8873FD526C679F5005B5874 /* SettingsViewController.swift in Sources */,
 				883CD88524B99F5900017080 /* MenuViewModel.swift in Sources */,
 				C86974E026CCD9B500D79842 /* ViewControllerUtils.swift in Sources */,
+				C88EE69726D39E720057E8FE /* RoleData.swift in Sources */,
 				8830954F262BDCD100AD40B0 /* Coordinator.swift in Sources */,
 				884B26B3249DDF820028E6D1 /* ViewModel.swift in Sources */,
 				8895073E2311481F00570907 /* MainViewController.swift in Sources */,
@@ -640,10 +666,12 @@
 				C86974E226CCF7F200D79842 /* ViewControllerWithSideMenu.swift in Sources */,
 				886F61192478D2BC0074BB0A /* R.generated.swift in Sources */,
 				883CD88324B99F4C00017080 /* MenuViewController.swift in Sources */,
+				C8B7A0D226D783D8004CA71C /* NetworkManager.swift in Sources */,
 				883CD87524B98E6500017080 /* ExtensionString.swift in Sources */,
 				883DD0E72634243A004A3EFD /* TableViewCellProtocol.swift in Sources */,
 				C86ECC0126CF5D8D004D7A74 /* SettingItem.swift in Sources */,
 				886F612B2479113B0074BB0A /* MainViewModel.swift in Sources */,
+				C88EE69426D39D1C0057E8FE /* RoleTableViewCell.swift in Sources */,
 				C88EE69026D33C440057E8FE /* ExtensionUIAlertController.swift in Sources */,
 				883DD0DD26341A52004A3EFD /* MenuTableViewCell.swift in Sources */,
 				884B26B5249DE6140028E6D1 /* ViewModelType.swift in Sources */,

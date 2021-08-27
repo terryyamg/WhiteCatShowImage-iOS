@@ -11,10 +11,12 @@ import RxSwift
 import RxCocoa
 import SideMenu
 
-class MenuCoordinator: BaseCoordinator {
+class MenuCoordinator: BaseCoordinator, CoordinatorDependency {
     private let disposeBag = DisposeBag()
     private let menuViewModel: MenuViewModel
 
+    var dependency: AppDependency?
+    
     init(menuViewModel: MenuViewModel) {
         self.menuViewModel = menuViewModel
     }
@@ -36,7 +38,8 @@ class MenuCoordinator: BaseCoordinator {
         switch screen {
         case .main:
             removeChildCoordinators()
-            let coordinator = MainCoordinator(viewModel: MainViewModel())
+            let viewModel = MainViewModel(networkManager: dependency!.networkManager)
+            let coordinator = MainCoordinator(viewModel: viewModel)
             coordinator.navigationController = navigationController
             start(coordinator: coordinator)
         case .history:

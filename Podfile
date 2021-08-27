@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+ platform :ios, '13.0'
 
 # ignore all warnings from all pods
 inhibit_all_warnings!
@@ -9,7 +9,6 @@ target 'WhiteCatShowImage' do
   use_frameworks!
 
   # Networking
-  pod 'Alamofire' # https://github.com/Alamofire/Alamofire
 
   # Rx
   pod 'RxSwift', '~> 5' # https://github.com/ReactiveX/RxSwift
@@ -25,6 +24,7 @@ target 'WhiteCatShowImage' do
   # Tools
   pod 'R.swift' # https://github.com/mac-cain13/R.swift
   pod 'SwiftLint' # https://github.com/realm/SwiftLint
+  pod 'SwiftSoup' # https://github.com/scinfu/SwiftSoup
 
   # UI
   pod 'Hero' # https://github.com/HeroTransitions/Hero

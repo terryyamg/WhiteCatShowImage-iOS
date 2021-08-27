@@ -268,10 +268,12 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 2 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 3 nibs.
   struct nib {
     /// Nib `MenuTableViewCell`.
     static let menuTableViewCell = _R.nib._MenuTableViewCell()
+    /// Nib `RoleTableViewCell`.
+    static let roleTableViewCell = _R.nib._RoleTableViewCell()
     /// Nib `SettingsTableViewCell`.
     static let settingsTableViewCell = _R.nib._SettingsTableViewCell()
 
@@ -280,6 +282,14 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.menuTableViewCell) instead")
     static func menuTableViewCell(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.menuTableViewCell)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "RoleTableViewCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.roleTableViewCell) instead")
+    static func roleTableViewCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.roleTableViewCell)
     }
     #endif
 
@@ -293,6 +303,10 @@ struct R: Rswift.Validatable {
 
     static func menuTableViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> MenuTableViewCell? {
       return R.nib.menuTableViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? MenuTableViewCell
+    }
+
+    static func roleTableViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> RoleTableViewCell? {
+      return R.nib.roleTableViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? RoleTableViewCell
     }
 
     static func settingsTableViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> SettingsTableViewCell? {
@@ -588,6 +602,17 @@ struct _R: Rswift.Validatable {
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> MenuTableViewCell? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? MenuTableViewCell
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _RoleTableViewCell: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "RoleTableViewCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> RoleTableViewCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? RoleTableViewCell
       }
 
       fileprivate init() {}
