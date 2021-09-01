@@ -149,14 +149,22 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 1 files.
+  /// This `R.file` struct is generated, and contains static references to 2 files.
   struct file {
     /// Resource file `.swiftlint.yml`.
     static let swiftlintYml = Rswift.FileResource(bundle: R.hostingBundle, name: ".swiftlint", pathExtension: "yml")
+    /// Resource file `loading.json`.
+    static let loadingJson = Rswift.FileResource(bundle: R.hostingBundle, name: "loading", pathExtension: "json")
 
     /// `bundle.url(forResource: ".swiftlint", withExtension: "yml")`
     static func swiftlintYml(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.swiftlintYml
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "loading", withExtension: "json")`
+    static func loadingJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.loadingJson
       return fileResource.bundle.url(forResource: fileResource)
     }
 
@@ -268,14 +276,24 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 3 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 4 nibs.
   struct nib {
+    /// Nib `LoadingView`.
+    static let loadingView = _R.nib._LoadingView()
     /// Nib `MenuTableViewCell`.
     static let menuTableViewCell = _R.nib._MenuTableViewCell()
     /// Nib `RoleTableViewCell`.
     static let roleTableViewCell = _R.nib._RoleTableViewCell()
     /// Nib `SettingsTableViewCell`.
     static let settingsTableViewCell = _R.nib._SettingsTableViewCell()
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "LoadingView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.loadingView) instead")
+    static func loadingView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.loadingView)
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UINib(name: "MenuTableViewCell", in: bundle)`
@@ -300,6 +318,10 @@ struct R: Rswift.Validatable {
       return UIKit.UINib(resource: R.nib.settingsTableViewCell)
     }
     #endif
+
+    static func loadingView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.loadingView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    }
 
     static func menuTableViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> MenuTableViewCell? {
       return R.nib.menuTableViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? MenuTableViewCell
@@ -596,6 +618,17 @@ struct _R: Rswift.Validatable {
 
   #if os(iOS) || os(tvOS)
   struct nib {
+    struct _LoadingView: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "LoadingView"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      fileprivate init() {}
+    }
+
     struct _MenuTableViewCell: Rswift.NibResourceType {
       let bundle = R.hostingBundle
       let name = "MenuTableViewCell"

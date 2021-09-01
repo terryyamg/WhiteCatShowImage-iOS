@@ -20,15 +20,24 @@ class MainViewModel: ViewModel, ViewModelType {
     struct Output {
         let todoItems: Observable<[RoleData]>
         let selectedEvent: Driver<RoleData>
+        let isLoading: Driver<Bool>
     }
 
     // MARK: Private
     private var items = BehaviorRelay<[RoleData]>(value: [])
     private var disposeBag: DisposeBag = DisposeBag()
     private let networkManager: NetworkManagerProtocol?
+    private let loading = BehaviorRelay<Bool>(value: false)
+    
+    private var roleData: [RoleData] = []
+    private let filterData = PublishSubject<Career>()
+    // Input
+    var triggerFilter: AnyObserver<Career>
     
     init(networkManager: NetworkManagerProtocol) {
         self.networkManager = networkManager
+        
+        triggerFilter = filterData.asObserver()
     }
     
     func transform(input: Input) -> Output {
@@ -70,10 +79,21 @@ class MainViewModel: ViewModel, ViewModelType {
                 return Disposables.create()
             }
         })
-        .subscribe(onNext: { (item) in
-            self.items.accept(item)
+        .subscribe(onNext: { [weak self] item in
+            guard let self = self else { return }
+            self.items.accept(item.filter({ $0.career == .SW }))
+            self.loading.accept(true)
+            self.roleData = item
         }).disposed(by: disposeBag)
 
-        return Output(todoItems: items.asObservable(), selectedEvent: selectedEvent)
+        filterData.bind { [weak self] career in
+            guard let self = self else { return }
+            self.items.accept(self.roleData.filter({ $0.career == career }))
+        }
+        .disposed(by: disposeBag)
+        
+        return Output(todoItems: items.asObservable(),
+                      selectedEvent: selectedEvent,
+                      isLoading: loading.asDriver())
     }
 }

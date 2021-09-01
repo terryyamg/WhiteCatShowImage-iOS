@@ -42,6 +42,9 @@
 		C86974DD26CCD87F00D79842 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86974DC26CCD87F00D79842 /* BaseNavigationController.swift */; };
 		C86974E026CCD9B500D79842 /* ViewControllerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86974DF26CCD9B500D79842 /* ViewControllerUtils.swift */; };
 		C86974E226CCF7F200D79842 /* ViewControllerWithSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86974E126CCF7F200D79842 /* ViewControllerWithSideMenu.swift */; };
+		C86C324C26DF6219005D0657 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86C324B26DF6219005D0657 /* LoadingView.swift */; };
+		C86C324E26DF630C005D0657 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C86C324D26DF630C005D0657 /* LoadingView.xib */; };
+		C86C325126DF6848005D0657 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = C86C325026DF6848005D0657 /* loading.json */; };
 		C86ECBFE26CF576A004D7A74 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86ECBFC26CF576A004D7A74 /* SettingsTableViewCell.swift */; };
 		C86ECBFF26CF576A004D7A74 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C86ECBFD26CF576A004D7A74 /* SettingsTableViewCell.xib */; };
 		C86ECC0126CF5D8D004D7A74 /* SettingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86ECC0026CF5D8D004D7A74 /* SettingItem.swift */; };
@@ -118,6 +121,9 @@
 		C86974DC26CCD87F00D79842 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		C86974DF26CCD9B500D79842 /* ViewControllerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerUtils.swift; sourceTree = "<group>"; };
 		C86974E126CCF7F200D79842 /* ViewControllerWithSideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerWithSideMenu.swift; sourceTree = "<group>"; };
+		C86C324B26DF6219005D0657 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		C86C324D26DF630C005D0657 /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		C86C325026DF6848005D0657 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		C86ECBFC26CF576A004D7A74 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		C86ECBFD26CF576A004D7A74 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
 		C86ECC0026CF5D8D004D7A74 /* SettingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItem.swift; sourceTree = "<group>"; };
@@ -220,6 +226,7 @@
 		884B26B1249DDF610028E6D1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				C86C324A26DF61B4005D0657 /* View */,
 				884B26B2249DDF820028E6D1 /* ViewModel.swift */,
 				884B26B4249DE6140028E6D1 /* ViewModelType.swift */,
 			);
@@ -229,6 +236,7 @@
 		886F61172478D26B0074BB0A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C86C324F26DF681E005D0657 /* Lottit */,
 				889507422311482100570907 /* Assets.xcassets */,
 				886F611A2478D52E0074BB0A /* Info.plist */,
 				886F61182478D2BC0074BB0A /* R.generated.swift */,
@@ -276,6 +284,7 @@
 			children = (
 				C86974DB26CCD87400D79842 /* Base */,
 				886F6129247911200074BB0A /* Main */,
+				C86C325226DF8CF4005D0657 /* Role Details */,
 				883CD88124B99E8A00017080 /* Menu */,
 				C8873FD326C66FAB005B5874 /* Settings */,
 				883C9362264009E500C5BBE3 /* Language */,
@@ -376,6 +385,30 @@
 				C86974DF26CCD9B500D79842 /* ViewControllerUtils.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		C86C324A26DF61B4005D0657 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C86C324B26DF6219005D0657 /* LoadingView.swift */,
+				C86C324D26DF630C005D0657 /* LoadingView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C86C324F26DF681E005D0657 /* Lottit */ = {
+			isa = PBXGroup;
+			children = (
+				C86C325026DF6848005D0657 /* loading.json */,
+			);
+			path = Lottit;
+			sourceTree = "<group>";
+		};
+		C86C325226DF8CF4005D0657 /* Role Details */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Role Details";
 			sourceTree = "<group>";
 		};
 		C8785A7526CA13590095D86E /* Cell */ = {
@@ -537,6 +570,7 @@
 			files = (
 				883CD87A24B9925F00017080 /* Localizable.strings in Resources */,
 				C88EE69526D39D1C0057E8FE /* RoleTableViewCell.xib in Resources */,
+				C86C325126DF6848005D0657 /* loading.json in Resources */,
 				883DD0DE26341A52004A3EFD /* MenuTableViewCell.xib in Resources */,
 				886F612E247916700074BB0A /* .swiftlint.yml in Resources */,
 				C86ECBFF26CF576A004D7A74 /* SettingsTableViewCell.xib in Resources */,
@@ -544,6 +578,7 @@
 				889507462311482100570907 /* LaunchScreen.storyboard in Resources */,
 				88309567262BEE7D00AD40B0 /* Menu.storyboard in Resources */,
 				889507432311482100570907 /* Assets.xcassets in Resources */,
+				C86C324E26DF630C005D0657 /* LoadingView.xib in Resources */,
 				889507412311481F00570907 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -666,6 +701,7 @@
 				C86974E226CCF7F200D79842 /* ViewControllerWithSideMenu.swift in Sources */,
 				886F61192478D2BC0074BB0A /* R.generated.swift in Sources */,
 				883CD88324B99F4C00017080 /* MenuViewController.swift in Sources */,
+				C86C324C26DF6219005D0657 /* LoadingView.swift in Sources */,
 				C8B7A0D226D783D8004CA71C /* NetworkManager.swift in Sources */,
 				883CD87524B98E6500017080 /* ExtensionString.swift in Sources */,
 				883DD0E72634243A004A3EFD /* TableViewCellProtocol.swift in Sources */,

@@ -11,6 +11,7 @@ import FSPagerView
 import RxCocoa
 import RxSwift
 import Collections
+import SnapKit
 
 class MainViewController: ViewControllerWithSideMenu {
 
@@ -19,6 +20,11 @@ class MainViewController: ViewControllerWithSideMenu {
 
     private let refreshControl: UIRefreshControl = {
         return UIRefreshControl()
+    }()
+    
+    private lazy var loadingView: LoadingView = {
+        let view = LoadingView()
+        return view
     }()
 
     let headerRefreshTrigger = PublishSubject<Void>()
@@ -37,13 +43,22 @@ class MainViewController: ViewControllerWithSideMenu {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        initView()
         initTableView()
         bindViewModel()
         initBottomPager()
     }
+    
+    func initView() {
+        self.view.addSubview(loadingView)
+        loadingView.snp.makeConstraints { make -> Void in
+            make.edges.equalToSuperview()
+        }
+    }
 
     func initTableView() {
         tableView.register(RoleTableViewCell.nib, forCellReuseIdentifier: RoleTableViewCell.identifier)
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         tableView.addSubview(refreshControl)
     }
 
@@ -64,6 +79,26 @@ class MainViewController: ViewControllerWithSideMenu {
             }
             .disposed(by: disposeBag)
         
+        outputs.isLoading
+            .map({ isHidden in
+              return isHidden
+            })
+            .drive(loadingView.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+    }
+    
+    private func selectedCareerType(_ index: Int) {
+        guard let viewModel = viewModel as? MainViewModel else { return }
+        let careerType: Career = Career.allCases[index]
+        viewModel.triggerFilter.onNext(careerType)
+    }
+    
+    @objc func refresh(_ sender: AnyObject) {
+        headerRefreshTrigger.onNext(())
+        refreshControl.endRefreshing()
+        loadingView.isHidden = false
+        loadingView.viewLoading.play()
     }
 }
 
@@ -83,10 +118,10 @@ extension MainViewController: FSPagerViewDataSource, FSPagerViewDelegate {
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
         pagerView.deselectItem(at: index, animated: true)
         pagerView.scrollToItem(at: index, animated: true)
-        print("select:\(index)")
+        selectedCareerType(index)
     }
     
     func pagerViewWillEndDragging(_ pagerView: FSPagerView, targetIndex: Int) {
-        print("pagerViewWillEndDragging:\(targetIndex)")
+        selectedCareerType(targetIndex)
     }
 }
