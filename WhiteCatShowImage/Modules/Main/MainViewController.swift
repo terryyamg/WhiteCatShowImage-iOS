@@ -30,7 +30,7 @@ class MainViewController: ViewControllerWithSideMenu {
     let headerRefreshTrigger = PublishSubject<Void>()
     let disposeBag = DisposeBag()
     var viewModel: ViewModel?
-    var listCareer: OrderedSet<UIImage> = [#imageLiteral(resourceName: "ic_sw.pdf"), #imageLiteral(resourceName: "ic_nac"), #imageLiteral(resourceName: "ic_war"), #imageLiteral(resourceName: "ic_lan"), #imageLiteral(resourceName: "ic_ar"), #imageLiteral(resourceName: "ic_mag"), #imageLiteral(resourceName: "ic_tsw"), #imageLiteral(resourceName: "ic_dr"), #imageLiteral(resourceName: "ic_var"), #imageLiteral(resourceName: "ic_bs"), #imageLiteral(resourceName: "ic_sab")]
+    var listCareer: OrderedSet<UIImage> = [#imageLiteral(resourceName: "all"), #imageLiteral(resourceName: "ic_sw.pdf"), #imageLiteral(resourceName: "ic_nac"), #imageLiteral(resourceName: "ic_war"), #imageLiteral(resourceName: "ic_lan"), #imageLiteral(resourceName: "ic_ar"), #imageLiteral(resourceName: "ic_mag"), #imageLiteral(resourceName: "ic_tsw"), #imageLiteral(resourceName: "ic_dr"), #imageLiteral(resourceName: "ic_var"), #imageLiteral(resourceName: "ic_bs"), #imageLiteral(resourceName: "ic_sab")]
 
     func initBottomPager() {
         viewBottomPager.dataSource = self
@@ -86,11 +86,28 @@ class MainViewController: ViewControllerWithSideMenu {
             .drive(loadingView.rx.isHidden)
             .disposed(by: disposeBag)
         
+        outputs.selectedEvent.drive(onNext: { roleData in
+            viewModel.didSelectRole.onNext(roleData)
+            
+        })
+        .disposed(by: disposeBag)
+        
+        tableView.rx.willDisplayCell.subscribe(onNext: { cell, indexPath in
+            cell.transform = CGAffineTransform(scaleX: 0, y: 0)
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0) {
+                cell.transform = CGAffineTransform.identity
+            }
+        }).disposed(by: disposeBag)
+        
     }
     
     private func selectedCareerType(_ index: Int) {
         guard let viewModel = viewModel as? MainViewModel else { return }
-        let careerType: Career = Career.allCases[index]
+        guard index != 0 else {
+            viewModel.triggerFilter.onNext(nil)
+            return
+        }
+        let careerType: Career = Career.allCases[index - 1]
         viewModel.triggerFilter.onNext(careerType)
     }
     

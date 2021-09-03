@@ -40,6 +40,7 @@ class MenuCoordinator: BaseCoordinator, CoordinatorDependency {
             removeChildCoordinators()
             let viewModel = MainViewModel(networkManager: dependency!.networkManager)
             let coordinator = MainCoordinator(viewModel: viewModel)
+            coordinator.dependency = dependency
             coordinator.navigationController = navigationController
             start(coordinator: coordinator)
         case .history:

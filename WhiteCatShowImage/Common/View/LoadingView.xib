@@ -21,6 +21,14 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zfn-jp-zqw">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
+                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Yc-Lj-a3J">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="aMw-yj-CRo">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </view>
+                            <blurEffect style="light"/>
+                        </visualEffectView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JcB-b9-fj7" customClass="AnimationView" customModule="Lottie">
                             <rect key="frame" x="16" y="340.5" width="382" height="215"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -35,14 +43,18 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="JcB-b9-fj7" firstAttribute="centerX" secondItem="zfn-jp-zqw" secondAttribute="centerX" id="7bZ-vR-wpZ"/>
+                        <constraint firstItem="2Yc-Lj-a3J" firstAttribute="leading" secondItem="zfn-jp-zqw" secondAttribute="leading" id="Big-be-Ms1"/>
                         <constraint firstItem="JcB-b9-fj7" firstAttribute="leading" secondItem="zfn-jp-zqw" secondAttribute="leading" constant="16" id="Dhv-TL-Q76"/>
                         <constraint firstItem="JcB-b9-fj7" firstAttribute="centerY" secondItem="zfn-jp-zqw" secondAttribute="centerY" id="Fz4-su-GG9"/>
+                        <constraint firstAttribute="trailing" secondItem="2Yc-Lj-a3J" secondAttribute="trailing" id="NGa-L2-yvt"/>
                         <constraint firstAttribute="trailing" secondItem="JcB-b9-fj7" secondAttribute="trailing" constant="16" id="YlY-Td-zCx"/>
+                        <constraint firstAttribute="bottom" secondItem="2Yc-Lj-a3J" secondAttribute="bottom" id="faN-TR-cY4"/>
+                        <constraint firstItem="2Yc-Lj-a3J" firstAttribute="top" secondItem="zfn-jp-zqw" secondAttribute="top" id="vs1-JM-6wo"/>
                     </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" white="0.66666666666666663" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="zfn-jp-zqw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="5Pg-2F-MKQ"/>
                 <constraint firstItem="zfn-jp-zqw" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="CuK-l5-kRe"/>
@@ -52,4 +64,7 @@
             <point key="canvasLocation" x="131.8840579710145" y="66.964285714285708"/>
         </view>
     </objects>
+    <designables>
+        <designable name="JcB-b9-fj7"/>
+    </designables>
 </document>

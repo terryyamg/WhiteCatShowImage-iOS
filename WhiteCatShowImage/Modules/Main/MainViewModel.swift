@@ -30,9 +30,10 @@ class MainViewModel: ViewModel, ViewModelType {
     private let loading = BehaviorRelay<Bool>(value: false)
     
     private var roleData: [RoleData] = []
-    private let filterData = PublishSubject<Career>()
+    private let filterData = PublishSubject<Career?>()
     // Input
-    var triggerFilter: AnyObserver<Career>
+    var triggerFilter: AnyObserver<Career?>
+    let didSelectRole = BehaviorSubject<RoleData>(value: RoleData(name: "", image: "", career: .SW, toUrl: ""))
     
     init(networkManager: NetworkManagerProtocol) {
         self.networkManager = networkManager
@@ -81,13 +82,17 @@ class MainViewModel: ViewModel, ViewModelType {
         })
         .subscribe(onNext: { [weak self] item in
             guard let self = self else { return }
-            self.items.accept(item.filter({ $0.career == .SW }))
+            self.items.accept(item)
             self.loading.accept(true)
             self.roleData = item
         }).disposed(by: disposeBag)
 
         filterData.bind { [weak self] career in
             guard let self = self else { return }
+            guard let career = career else {
+                self.items.accept(self.roleData)
+                return
+            }
             self.items.accept(self.roleData.filter({ $0.career == career }))
         }
         .disposed(by: disposeBag)

@@ -52,6 +52,10 @@
 		C8873FD526C679F5005B5874 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8873FD426C679F5005B5874 /* SettingsViewController.swift */; };
 		C8873FD726C67A14005B5874 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8873FD626C67A14005B5874 /* SettingsViewModel.swift */; };
 		C8873FD926C67C9A005B5874 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8873FD826C67C9A005B5874 /* Settings.storyboard */; };
+		C88DBEB326E069EA00772691 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88DBEB226E069EA00772691 /* DetailsViewController.swift */; };
+		C88DBEB526E06A0700772691 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88DBEB426E06A0700772691 /* DetailsViewModel.swift */; };
+		C88DBEB726E06B2300772691 /* DetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88DBEB626E06B2300772691 /* DetailsCoordinator.swift */; };
+		C88DBEB926E06B3500772691 /* Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C88DBEB826E06B3500772691 /* Details.storyboard */; };
 		C88EE69026D33C440057E8FE /* ExtensionUIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88EE68F26D33C440057E8FE /* ExtensionUIAlertController.swift */; };
 		C88EE69426D39D1C0057E8FE /* RoleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88EE69226D39D1C0057E8FE /* RoleTableViewCell.swift */; };
 		C88EE69526D39D1C0057E8FE /* RoleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C88EE69326D39D1C0057E8FE /* RoleTableViewCell.xib */; };
@@ -131,6 +135,10 @@
 		C8873FD426C679F5005B5874 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C8873FD626C67A14005B5874 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		C8873FD826C67C9A005B5874 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		C88DBEB226E069EA00772691 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		C88DBEB426E06A0700772691 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
+		C88DBEB626E06B2300772691 /* DetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCoordinator.swift; sourceTree = "<group>"; };
+		C88DBEB826E06B3500772691 /* Details.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Details.storyboard; sourceTree = "<group>"; };
 		C88EE68F26D33C440057E8FE /* ExtensionUIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIAlertController.swift; sourceTree = "<group>"; };
 		C88EE69226D39D1C0057E8FE /* RoleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleTableViewCell.swift; sourceTree = "<group>"; };
 		C88EE69326D39D1C0057E8FE /* RoleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoleTableViewCell.xib; sourceTree = "<group>"; };
@@ -284,7 +292,7 @@
 			children = (
 				C86974DB26CCD87400D79842 /* Base */,
 				886F6129247911200074BB0A /* Main */,
-				C86C325226DF8CF4005D0657 /* Role Details */,
+				C86C325226DF8CF4005D0657 /* Details */,
 				883CD88124B99E8A00017080 /* Menu */,
 				C8873FD326C66FAB005B5874 /* Settings */,
 				883C9362264009E500C5BBE3 /* Language */,
@@ -404,11 +412,15 @@
 			path = Lottit;
 			sourceTree = "<group>";
 		};
-		C86C325226DF8CF4005D0657 /* Role Details */ = {
+		C86C325226DF8CF4005D0657 /* Details */ = {
 			isa = PBXGroup;
 			children = (
+				C88DBEB626E06B2300772691 /* DetailsCoordinator.swift */,
+				C88DBEB226E069EA00772691 /* DetailsViewController.swift */,
+				C88DBEB426E06A0700772691 /* DetailsViewModel.swift */,
+				C88DBEB826E06B3500772691 /* Details.storyboard */,
 			);
-			path = "Role Details";
+			path = Details;
 			sourceTree = "<group>";
 		};
 		C8785A7526CA13590095D86E /* Cell */ = {
@@ -569,6 +581,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				883CD87A24B9925F00017080 /* Localizable.strings in Resources */,
+				C88DBEB926E06B3500772691 /* Details.storyboard in Resources */,
 				C88EE69526D39D1C0057E8FE /* RoleTableViewCell.xib in Resources */,
 				C86C325126DF6848005D0657 /* loading.json in Resources */,
 				883DD0DE26341A52004A3EFD /* MenuTableViewCell.xib in Resources */,
@@ -684,6 +697,7 @@
 				8830955C262BE1A200AD40B0 /* MainCoordinator.swift in Sources */,
 				886F61262478E2250074BB0A /* ExtensionUIView.swift in Sources */,
 				C86ECBFE26CF576A004D7A74 /* SettingsTableViewCell.swift in Sources */,
+				C88DBEB326E069EA00772691 /* DetailsViewController.swift in Sources */,
 				C8873FD526C679F5005B5874 /* SettingsViewController.swift in Sources */,
 				883CD88524B99F5900017080 /* MenuViewModel.swift in Sources */,
 				C86974E026CCD9B500D79842 /* ViewControllerUtils.swift in Sources */,
@@ -696,6 +710,7 @@
 				8895073C2311481F00570907 /* AppDelegate.swift in Sources */,
 				883DD0EC26342C92004A3EFD /* MenuItem.swift in Sources */,
 				C8785A7426CA131E0095D86E /* SettingsCoordinator.swift in Sources */,
+				C88DBEB726E06B2300772691 /* DetailsCoordinator.swift in Sources */,
 				C86974DA26CCD62C00D79842 /* AppCoordinator.swift in Sources */,
 				886F61222478DF4E0074BB0A /* ExtensionUIApplication.swift in Sources */,
 				C86974E226CCF7F200D79842 /* ViewControllerWithSideMenu.swift in Sources */,
@@ -714,6 +729,7 @@
 				C8873FD726C67A14005B5874 /* SettingsViewModel.swift in Sources */,
 				C86974DD26CCD87F00D79842 /* BaseNavigationController.swift in Sources */,
 				883CD87724B98F2600017080 /* SingletonVariable.swift in Sources */,
+				C88DBEB526E06A0700772691 /* DetailsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -89,8 +89,10 @@ struct R: Rswift.Validatable {
   }
 
   #if os(iOS) || os(tvOS)
-  /// This `R.storyboard` struct is generated, and contains static references to 4 storyboards.
+  /// This `R.storyboard` struct is generated, and contains static references to 5 storyboards.
   struct storyboard {
+    /// Storyboard `Details`.
+    static let details = _R.storyboard.details()
     /// Storyboard `LaunchScreen`.
     static let launchScreen = _R.storyboard.launchScreen()
     /// Storyboard `Main`.
@@ -99,6 +101,13 @@ struct R: Rswift.Validatable {
     static let menu = _R.storyboard.menu()
     /// Storyboard `Settings`.
     static let settings = _R.storyboard.settings()
+
+    #if os(iOS) || os(tvOS)
+    /// `UIStoryboard(name: "Details", bundle: ...)`
+    static func details(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.details)
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UIStoryboard(name: "LaunchScreen", bundle: ...)`
@@ -171,8 +180,12 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 11 images.
+  /// This `R.image` struct is generated, and contains static references to 14 images.
   struct image {
+    /// Image `all`.
+    static let all = Rswift.ImageResource(bundle: R.hostingBundle, name: "all")
+    /// Image `fail`.
+    static let fail = Rswift.ImageResource(bundle: R.hostingBundle, name: "fail")
     /// Image `ic_ar`.
     static let ic_ar = Rswift.ImageResource(bundle: R.hostingBundle, name: "ic_ar")
     /// Image `ic_bs`.
@@ -195,6 +208,22 @@ struct R: Rswift.Validatable {
     static let ic_var = Rswift.ImageResource(bundle: R.hostingBundle, name: "ic_var")
     /// Image `ic_war`.
     static let ic_war = Rswift.ImageResource(bundle: R.hostingBundle, name: "ic_war")
+    /// Image `search_image`.
+    static let search_image = Rswift.ImageResource(bundle: R.hostingBundle, name: "search_image")
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "all", bundle: ..., traitCollection: ...)`
+    static func all(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.all, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "fail", bundle: ..., traitCollection: ...)`
+    static func fail(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.fail, compatibleWith: traitCollection)
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "ic_ar", bundle: ..., traitCollection: ...)`
@@ -270,6 +299,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "ic_war", bundle: ..., traitCollection: ...)`
     static func ic_war(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.ic_war, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "search_image", bundle: ..., traitCollection: ...)`
+    static func search_image(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.search_image, compatibleWith: traitCollection)
     }
     #endif
 
@@ -670,6 +706,9 @@ struct _R: Rswift.Validatable {
   struct storyboard: Rswift.Validatable {
     static func validate() throws {
       #if os(iOS) || os(tvOS)
+      try details.validate()
+      #endif
+      #if os(iOS) || os(tvOS)
       try launchScreen.validate()
       #endif
       #if os(iOS) || os(tvOS)
@@ -682,6 +721,26 @@ struct _R: Rswift.Validatable {
       try settings.validate()
       #endif
     }
+
+    #if os(iOS) || os(tvOS)
+    struct details: Rswift.StoryboardResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let detailsViewController = StoryboardViewControllerResource<DetailsViewController>(identifier: "DetailsViewController")
+      let name = "Details"
+
+      func detailsViewController(_: Void = ()) -> DetailsViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: detailsViewController)
+      }
+
+      static func validate() throws {
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+        if _R.storyboard.details().detailsViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'detailsViewController' could not be loaded from storyboard 'Details' as 'DetailsViewController'.") }
+      }
+
+      fileprivate init() {}
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     struct launchScreen: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {

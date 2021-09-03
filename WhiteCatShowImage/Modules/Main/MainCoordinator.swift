@@ -6,11 +6,15 @@
 //  Copyright © 2021 楊鎮齊. All rights reserved.
 //
 
-import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
 
-class MainCoordinator: BaseCoordinator {
+class MainCoordinator: BaseCoordinator, CoordinatorDependency {
+    private let disposeBag = DisposeBag()
     private let viewModel: MainViewModel
+    
+    var dependency: AppDependency?
     
     init(viewModel: MainViewModel) {
         self.viewModel = viewModel
@@ -21,6 +25,16 @@ class MainCoordinator: BaseCoordinator {
         vc.viewModel = viewModel
         
         navigationController.viewControllers = [vc]
+        
+        viewModel.didSelectRole
+            .subscribe(onNext: { [weak self] roleData in
+                guard let self = self else { return }
+                let viewModel = DetailsViewModel(networkManager: self.dependency!.networkManager,
+                                                 roleDataUrl: roleData.toUrl)
+                let coordinator = DetailsCoordinator(viewModel: viewModel)
+                coordinator.start(vc)
+            })
+            .disposed(by: disposeBag)
     }
 
 }
