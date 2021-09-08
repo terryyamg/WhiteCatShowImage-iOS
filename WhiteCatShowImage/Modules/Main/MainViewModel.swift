@@ -20,14 +20,13 @@ class MainViewModel: ViewModel, ViewModelType {
     struct Output {
         let todoItems: Observable<[RoleData]>
         let selectedEvent: Driver<RoleData>
-        let isLoading: Driver<Bool>
+        let isLoading: PublishSubject<Void>
     }
 
     // MARK: Private
     private var items = BehaviorRelay<[RoleData]>(value: [])
     private var disposeBag: DisposeBag = DisposeBag()
     private let networkManager: NetworkManagerProtocol?
-    private let loading = BehaviorRelay<Bool>(value: false)
     
     private var roleData: [RoleData] = []
     private let filterData = PublishSubject<Career?>()
@@ -83,7 +82,7 @@ class MainViewModel: ViewModel, ViewModelType {
         .subscribe(onNext: { [weak self] item in
             guard let self = self else { return }
             self.items.accept(item)
-            self.loading.accept(true)
+            self.loading.onNext(())
             self.roleData = item
         }).disposed(by: disposeBag)
 
@@ -99,6 +98,6 @@ class MainViewModel: ViewModel, ViewModelType {
         
         return Output(todoItems: items.asObservable(),
                       selectedEvent: selectedEvent,
-                      isLoading: loading.asDriver())
+                      isLoading: loading)
     }
 }

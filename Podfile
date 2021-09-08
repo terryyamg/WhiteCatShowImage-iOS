@@ -13,7 +13,7 @@ target 'WhiteCatShowImage' do
   # Rx
   pod 'RxSwift', '~> 5' # https://github.com/ReactiveX/RxSwift
   pod 'RxCocoa', '~> 5'
-
+  
   # Auto Layout
   pod 'SnapKit' # https://github.com/SnapKit/SnapKit
 
@@ -28,7 +28,6 @@ target 'WhiteCatShowImage' do
 
   # UI
   pod 'Hero' # https://github.com/HeroTransitions/Hero
-  pod 'Spring', :git => 'https://github.com/MengTo/Spring.git' # https://github.com/MengTo/Spring
   pod 'lottie-ios' # https://github.com/airbnb/lottie-ios
   pod 'SideMenu', '~> 6.0' # https://github.com/jonkykong/SideMenu
 

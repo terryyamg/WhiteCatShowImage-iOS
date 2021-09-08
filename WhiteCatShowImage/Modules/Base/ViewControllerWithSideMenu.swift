@@ -9,7 +9,7 @@
 import UIKit
 import SideMenu
 
-class ViewControllerWithSideMenu: UIViewController {
+class ViewControllerWithSideMenu: BaseViewController {
     var panGesture = UIPanGestureRecognizer()
     var edgeGesture = UIScreenEdgePanGestureRecognizer()
     

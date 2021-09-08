@@ -43,4 +43,14 @@ class LoadingView: UIView {
     func loadViewFromNib() -> UIView {
         return R.nib.loadingView.instantiate(withOwner: self, options: nil).first as? UIView ?? UIView()
     }
+    
+    func animateHidden() {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 1.0, delay: 0.2, options: .curveEaseInOut, animations: {
+                self.alpha = 0.0
+            }, completion: { _ in
+                self.removeFromSuperview()
+            })
+        }
+    }
 }

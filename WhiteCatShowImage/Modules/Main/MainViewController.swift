@@ -22,11 +22,6 @@ class MainViewController: ViewControllerWithSideMenu {
         return UIRefreshControl()
     }()
     
-    private lazy var loadingView: LoadingView = {
-        let view = LoadingView()
-        return view
-    }()
-
     let headerRefreshTrigger = PublishSubject<Void>()
     let disposeBag = DisposeBag()
     var viewModel: ViewModel?
@@ -49,13 +44,6 @@ class MainViewController: ViewControllerWithSideMenu {
         initBottomPager()
     }
     
-    func initView() {
-        self.view.addSubview(loadingView)
-        loadingView.snp.makeConstraints { make -> Void in
-            make.edges.equalToSuperview()
-        }
-    }
-
     func initTableView() {
         tableView.register(RoleTableViewCell.nib, forCellReuseIdentifier: RoleTableViewCell.identifier)
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
@@ -80,10 +68,9 @@ class MainViewController: ViewControllerWithSideMenu {
             .disposed(by: disposeBag)
         
         outputs.isLoading
-            .map({ isHidden in
-              return isHidden
+            .subscribe(onNext: { [weak self] _ in
+                self?.loadingView.animateHidden()
             })
-            .drive(loadingView.rx.isHidden)
             .disposed(by: disposeBag)
         
         outputs.selectedEvent.drive(onNext: { roleData in

@@ -49,6 +49,7 @@
 		C86ECBFF26CF576A004D7A74 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C86ECBFD26CF576A004D7A74 /* SettingsTableViewCell.xib */; };
 		C86ECC0126CF5D8D004D7A74 /* SettingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86ECC0026CF5D8D004D7A74 /* SettingItem.swift */; };
 		C8785A7426CA131E0095D86E /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8785A7326CA131E0095D86E /* SettingsCoordinator.swift */; };
+		C881349A26E60DB70008CA8A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C881349926E60DB70008CA8A /* BaseViewController.swift */; };
 		C8873FD526C679F5005B5874 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8873FD426C679F5005B5874 /* SettingsViewController.swift */; };
 		C8873FD726C67A14005B5874 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8873FD626C67A14005B5874 /* SettingsViewModel.swift */; };
 		C8873FD926C67C9A005B5874 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8873FD826C67C9A005B5874 /* Settings.storyboard */; };
@@ -132,6 +133,7 @@
 		C86ECBFD26CF576A004D7A74 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
 		C86ECC0026CF5D8D004D7A74 /* SettingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItem.swift; sourceTree = "<group>"; };
 		C8785A7326CA131E0095D86E /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		C881349926E60DB70008CA8A /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		C8873FD426C679F5005B5874 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C8873FD626C67A14005B5874 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		C8873FD826C67C9A005B5874 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 			children = (
 				C86974DC26CCD87F00D79842 /* BaseNavigationController.swift */,
 				C86974E126CCF7F200D79842 /* ViewControllerWithSideMenu.swift */,
+				C881349926E60DB70008CA8A /* BaseViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -716,6 +719,7 @@
 				C86974E226CCF7F200D79842 /* ViewControllerWithSideMenu.swift in Sources */,
 				886F61192478D2BC0074BB0A /* R.generated.swift in Sources */,
 				883CD88324B99F4C00017080 /* MenuViewController.swift in Sources */,
+				C881349A26E60DB70008CA8A /* BaseViewController.swift in Sources */,
 				C86C324C26DF6219005D0657 /* LoadingView.swift in Sources */,
 				C8B7A0D226D783D8004CA71C /* NetworkManager.swift in Sources */,
 				883CD87524B98E6500017080 /* ExtensionString.swift in Sources */,

@@ -7,7 +7,10 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 class ViewModel: NSObject {
 
+    let loading = PublishSubject<Void>()
 }

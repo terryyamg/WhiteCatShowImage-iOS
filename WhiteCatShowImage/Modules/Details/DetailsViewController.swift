@@ -13,9 +13,9 @@ import RxSwift
 import Kingfisher
 import Lottie
 
-class DetailsViewController: UIViewController {
+class DetailsViewController: BaseViewController {
     
-    @IBOutlet weak var ivRole: UIImageView!
+    @IBOutlet weak var viewImagePager: FSPagerView!
     @IBOutlet weak var viewBottomPager: FSPagerView!
     
     let refreshTrigger = PublishSubject<Void>()
@@ -24,6 +24,7 @@ class DetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initView()
         bindViewModel()
         initPager()
     }
@@ -40,14 +41,25 @@ class DetailsViewController: UIViewController {
             .drive(onNext: { [weak self] imageUrlList in
                 guard let self = self else { return }
                 
-                self.setShowImage(0)
+                self.viewImagePager.reloadData()
                 self.viewBottomPager.reloadData()
             })
             .disposed(by: disposeBag)
         
+        outputs.isLoading
+            .subscribe(onNext: { [weak self] _ in
+                self?.loadingView.animateHidden()
+            })
+            .disposed(by: disposeBag)
     }
     
     func initPager() {
+        viewImagePager.dataSource = self
+        viewImagePager.delegate = self
+        viewImagePager.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "FSPagerViewCell")
+        viewImagePager.transformer = FSPagerViewTransformer(type: .cubic)
+        viewImagePager.decelerationDistance = FSPagerView.automaticDistance
+        
         viewBottomPager.dataSource = self
         viewBottomPager.delegate = self
         viewBottomPager.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "FSPagerViewCell")
@@ -56,28 +68,14 @@ class DetailsViewController: UIViewController {
         viewBottomPager.decelerationDistance = FSPagerView.automaticDistance
     }
     
-    private func setShowImage(_ index: Int) {
-        guard let viewModel = viewModel as? DetailsViewModel else { return }
-        guard !viewModel.images.isEmpty else { return }
-        let processor = DownsamplingImageProcessor(size: ivRole.bounds.size)
-        
-        ivRole.kf.indicatorType = .activity
-        ivRole.kf.setImage(with: URL(string: viewModel.images[index]),
-                           placeholder: R.image.search_image(),
-                           options: [
-                            .processor(processor),
-                            .transition(.fade(1)),
-                            .cacheOriginalImage
-                           ], completionHandler: { result in
-                            switch result {
-                            case .success(let value):
-                                print("Task done for: \(value.source.url?.absoluteString ?? "")")
-                            case .failure(let error):
-                                print("Job failed: \(error.localizedDescription)")
-                                self.ivRole.image = R.image.fail()
-                            }
-                           })
+    private func synchronizeScrollPager(at index: Int, with pagerView: FSPagerView) {
+        if pagerView == viewBottomPager {
+            viewImagePager.scrollToItem(at: index, animated: true)
+        } else {
+            viewBottomPager.scrollToItem(at: index, animated: true)
+        }
     }
+    
 }
 
 extension DetailsViewController: FSPagerViewDataSource, FSPagerViewDelegate {
@@ -89,15 +87,21 @@ extension DetailsViewController: FSPagerViewDataSource, FSPagerViewDelegate {
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "FSPagerViewCell", at: index)
         guard let viewModel = viewModel as? DetailsViewModel else { return cell }
-        cell.imageView?.kf.setImage(with: URL(string: viewModel.images[index]), completionHandler: { result in
-            switch result {
-            case .success(let value):
-                print("Task done for: \(value.source.url?.absoluteString ?? "")")
-            case .failure(let error):
-                print("Job failed: \(error.localizedDescription)")
-                cell.imageView?.image = R.image.fail()
-            }
-        })
+        cell.imageView?.kf.indicatorType = .activity
+        cell.imageView?.kf.setImage(with: URL(string: viewModel.images[index]),
+                                    placeholder: R.image.search_image(),
+                                    options: [
+                                        .transition(.fade(1)),
+                                        .cacheOriginalImage
+                                    ], completionHandler: { result in
+                                        switch result {
+                                        case .success(let value):
+                                            print("Task done for: \(value.source.url?.absoluteString ?? "")")
+                                        case .failure(let error):
+                                            print("Job failed: \(error.localizedDescription)")
+                                            cell.imageView?.image = R.image.fail()
+                                        }
+                                    })
         cell.imageView?.contentMode = .scaleAspectFill
         cell.imageView?.clipsToBounds = true
         return cell
@@ -105,11 +109,10 @@ extension DetailsViewController: FSPagerViewDataSource, FSPagerViewDelegate {
     
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
         pagerView.deselectItem(at: index, animated: true)
-        pagerView.scrollToItem(at: index, animated: true)
-        setShowImage(index)
+        synchronizeScrollPager(at: index, with: pagerView)
     }
     
     func pagerViewWillEndDragging(_ pagerView: FSPagerView, targetIndex: Int) {
-        setShowImage(targetIndex)
+        synchronizeScrollPager(at: targetIndex, with: pagerView)
     }
 }
