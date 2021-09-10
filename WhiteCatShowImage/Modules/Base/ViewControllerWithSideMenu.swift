@@ -20,6 +20,9 @@ class ViewControllerWithSideMenu: BaseViewController {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet.indent"), style: .plain, target: self, action: #selector(menuClicked))
         navigationItem.leftBarButtonItem?.accessibilityIdentifier = "menuButton"
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: nil)
+        navigationItem.rightBarButtonItem?.accessibilityIdentifier = "searchButton"
     }
     
     override func viewWillAppear(_ animated: Bool) {

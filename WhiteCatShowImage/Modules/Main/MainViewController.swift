@@ -52,10 +52,12 @@ class MainViewController: ViewControllerWithSideMenu {
 
     func bindViewModel() {
         guard let viewModel = viewModel as? MainViewModel else { return }
+        guard let searchButton = navigationItem.rightBarButtonItem else { return }
         
         let refresh = Observable.of(Observable.just(()), headerRefreshTrigger).merge()
         let inputs = MainViewModel.Input(headerRefresh: refresh,
-                                         selection: tableView.rx.modelSelected(RoleData.self).asDriver())
+                                         selection: tableView.rx.modelSelected(RoleData.self).asDriver(),
+                                         search: searchButton.rx.tap.asObservable())
         let outputs = viewModel.transform(input: inputs)
         
         outputs.todoItems
@@ -67,7 +69,7 @@ class MainViewController: ViewControllerWithSideMenu {
             }
             .disposed(by: disposeBag)
         
-        outputs.isLoading
+        outputs.hiddenLoading
             .subscribe(onNext: { [weak self] _ in
                 self?.loadingView.animateHidden()
             })
@@ -78,6 +80,12 @@ class MainViewController: ViewControllerWithSideMenu {
             
         })
         .disposed(by: disposeBag)
+        
+        outputs.searchEvent.asDriver(onErrorJustReturn: [])
+            .drive(onNext: { roleDataList in
+                viewModel.didClickSearch.onNext(roleDataList)
+            })
+            .disposed(by: disposeBag)
         
         tableView.rx.willDisplayCell.subscribe(onNext: { cell, indexPath in
             cell.transform = CGAffineTransform(scaleX: 0, y: 0)
@@ -91,17 +99,17 @@ class MainViewController: ViewControllerWithSideMenu {
     private func selectedCareerType(_ index: Int) {
         guard let viewModel = viewModel as? MainViewModel else { return }
         guard index != 0 else {
-            viewModel.triggerFilter.onNext(nil)
+            viewModel.didFilter.onNext((nil, nil))
             return
         }
         let careerType: Career = Career.allCases[index - 1]
-        viewModel.triggerFilter.onNext(careerType)
+        viewModel.didFilter.onNext((careerType, nil))
     }
     
     @objc func refresh(_ sender: AnyObject) {
         headerRefreshTrigger.onNext(())
         refreshControl.endRefreshing()
-        loadingView.isHidden = false
+        initView()
         loadingView.viewLoading.play()
     }
 }

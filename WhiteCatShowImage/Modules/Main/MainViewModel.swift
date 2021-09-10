@@ -15,12 +15,14 @@ class MainViewModel: ViewModel, ViewModelType {
     struct Input {
         let headerRefresh: Observable<Void>
         let selection: Driver<RoleData>
+        let search: Observable<Void>
     }
 
     struct Output {
         let todoItems: Observable<[RoleData]>
         let selectedEvent: Driver<RoleData>
-        let isLoading: PublishSubject<Void>
+        let hiddenLoading: PublishSubject<Void>
+        let searchEvent: Observable<[RoleData]>
     }
 
     // MARK: Private
@@ -29,15 +31,16 @@ class MainViewModel: ViewModel, ViewModelType {
     private let networkManager: NetworkManagerProtocol?
     
     private var roleData: [RoleData] = []
-    private let filterData = PublishSubject<Career?>()
+    private let filterData = PublishSubject<(Career?, String?)>()
     // Input
-    var triggerFilter: AnyObserver<Career?>
+    var didFilter: AnyObserver<(Career?, String?)>
     let didSelectRole = BehaviorSubject<RoleData>(value: RoleData(name: "", image: "", career: .SW, toUrl: ""))
+    let didClickSearch = BehaviorSubject<[RoleData]>(value: [])
     
     init(networkManager: NetworkManagerProtocol) {
         self.networkManager = networkManager
         
-        triggerFilter = filterData.asObserver()
+        didFilter = filterData.asObserver()
     }
     
     func transform(input: Input) -> Output {
@@ -86,18 +89,34 @@ class MainViewModel: ViewModel, ViewModelType {
             self.roleData = item
         }).disposed(by: disposeBag)
 
-        filterData.bind { [weak self] career in
+        filterData.bind { [weak self] (career, name) in
             guard let self = self else { return }
             guard let career = career else {
-                self.items.accept(self.roleData)
+                // 過濾名字
+                guard let name = name else {
+                    self.items.accept(self.roleData)
+                    return
+                }
+                self.items.accept(self.roleData.filter({ $0.name.contains(name) }))
                 return
             }
             self.items.accept(self.roleData.filter({ $0.career == career }))
         }
         .disposed(by: disposeBag)
         
+        let searchEvent = input.search
+            .flatMapLatest({ [weak self] () -> Observable<[RoleData]> in
+                guard let self = self else { return Observable.just([]) }
+                return Observable.create { subscriber in
+                    subscriber.onNext(self.roleData)
+                    subscriber.onCompleted()
+                    return Disposables.create()
+                }
+            })
+            
         return Output(todoItems: items.asObservable(),
                       selectedEvent: selectedEvent,
-                      isLoading: loading)
+                      hiddenLoading: loading,
+                      searchEvent: searchEvent)
     }
 }

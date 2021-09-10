@@ -35,6 +35,21 @@ class MainCoordinator: BaseCoordinator, CoordinatorDependency {
                 coordinator.start(vc)
             })
             .disposed(by: disposeBag)
+        
+        viewModel.didClickSearch
+            .subscribe(onNext: { roleDataList in
+                let viewModel = SearchViewModel(roleDataList: roleDataList)
+                let coordinator = SearchCoordinator(viewModel: viewModel,
+                                                    parentCoordinator: self)
+                coordinator.start(vc)
+            })
+            .disposed(by: disposeBag)
     }
 
+}
+
+extension MainCoordinator: SearchDelegate {
+    func searchText(_ text: String) {
+        viewModel.didFilter.onNext((nil, text))
+    }
 }

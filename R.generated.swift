@@ -89,7 +89,7 @@ struct R: Rswift.Validatable {
   }
 
   #if os(iOS) || os(tvOS)
-  /// This `R.storyboard` struct is generated, and contains static references to 5 storyboards.
+  /// This `R.storyboard` struct is generated, and contains static references to 6 storyboards.
   struct storyboard {
     /// Storyboard `Details`.
     static let details = _R.storyboard.details()
@@ -99,6 +99,8 @@ struct R: Rswift.Validatable {
     static let main = _R.storyboard.main()
     /// Storyboard `Menu`.
     static let menu = _R.storyboard.menu()
+    /// Storyboard `Search`.
+    static let search = _R.storyboard.search()
     /// Storyboard `Settings`.
     static let settings = _R.storyboard.settings()
 
@@ -127,6 +129,13 @@ struct R: Rswift.Validatable {
     /// `UIStoryboard(name: "Menu", bundle: ...)`
     static func menu(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.menu)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIStoryboard(name: "Search", bundle: ...)`
+    static func search(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.search)
     }
     #endif
 
@@ -180,10 +189,14 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 14 images.
+  /// This `R.image` struct is generated, and contains static references to 16 images.
   struct image {
     /// Image `all`.
     static let all = Rswift.ImageResource(bundle: R.hostingBundle, name: "all")
+    /// Image `confirm_disable`.
+    static let confirm_disable = Rswift.ImageResource(bundle: R.hostingBundle, name: "confirm_disable")
+    /// Image `confirm`.
+    static let confirm = Rswift.ImageResource(bundle: R.hostingBundle, name: "confirm")
     /// Image `fail`.
     static let fail = Rswift.ImageResource(bundle: R.hostingBundle, name: "fail")
     /// Image `ic_ar`.
@@ -215,6 +228,20 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "all", bundle: ..., traitCollection: ...)`
     static func all(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.all, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "confirm", bundle: ..., traitCollection: ...)`
+    static func confirm(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.confirm, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "confirm_disable", bundle: ..., traitCollection: ...)`
+    static func confirm_disable(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.confirm_disable, compatibleWith: traitCollection)
     }
     #endif
 
@@ -718,6 +745,9 @@ struct _R: Rswift.Validatable {
       try menu.validate()
       #endif
       #if os(iOS) || os(tvOS)
+      try search.validate()
+      #endif
+      #if os(iOS) || os(tvOS)
       try settings.validate()
       #endif
     }
@@ -795,6 +825,27 @@ struct _R: Rswift.Validatable {
           if UIKit.UIColor(named: "main_color", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'main_color' is used in storyboard 'Menu', but couldn't be loaded.") }
         }
         if _R.storyboard.menu().menuViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'menuViewController' could not be loaded from storyboard 'Menu' as 'MenuViewController'.") }
+      }
+
+      fileprivate init() {}
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    struct search: Rswift.StoryboardResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "Search"
+      let searchViewController = StoryboardViewControllerResource<SearchViewController>(identifier: "SearchViewController")
+
+      func searchViewController(_: Void = ()) -> SearchViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: searchViewController)
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "confirm_disable", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'confirm_disable' is used in storyboard 'Search', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+        if _R.storyboard.search().searchViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'searchViewController' could not be loaded from storyboard 'Search' as 'SearchViewController'.") }
       }
 
       fileprivate init() {}

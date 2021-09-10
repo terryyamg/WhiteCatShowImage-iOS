@@ -26,7 +26,6 @@
 		884B26B3249DDF820028E6D1 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884B26B2249DDF820028E6D1 /* ViewModel.swift */; };
 		884B26B5249DE6140028E6D1 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884B26B4249DE6140028E6D1 /* ViewModelType.swift */; };
 		886F61192478D2BC0074BB0A /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886F61182478D2BC0074BB0A /* R.generated.swift */; };
-		886F61222478DF4E0074BB0A /* ExtensionUIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886F61212478DF4E0074BB0A /* ExtensionUIApplication.swift */; };
 		886F61262478E2250074BB0A /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886F61252478E2250074BB0A /* ExtensionUIView.swift */; };
 		886F61282478E2F10074BB0A /* ExtensionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886F61272478E2F10074BB0A /* ExtensionDate.swift */; };
 		886F612B2479113B0074BB0A /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886F612A2479113B0074BB0A /* MainViewModel.swift */; };
@@ -48,6 +47,10 @@
 		C86ECBFE26CF576A004D7A74 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86ECBFC26CF576A004D7A74 /* SettingsTableViewCell.swift */; };
 		C86ECBFF26CF576A004D7A74 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C86ECBFD26CF576A004D7A74 /* SettingsTableViewCell.xib */; };
 		C86ECC0126CF5D8D004D7A74 /* SettingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86ECC0026CF5D8D004D7A74 /* SettingItem.swift */; };
+		C8784B5026E89CDA00C70360 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8784B4F26E89CDA00C70360 /* SearchViewController.swift */; };
+		C8784B5226E89CF200C70360 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8784B5126E89CF200C70360 /* Search.storyboard */; };
+		C8784B5426E89CFD00C70360 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8784B5326E89CFD00C70360 /* SearchViewModel.swift */; };
+		C8784B5626E89D5200C70360 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8784B5526E89D5200C70360 /* SearchCoordinator.swift */; };
 		C8785A7426CA131E0095D86E /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8785A7326CA131E0095D86E /* SettingsCoordinator.swift */; };
 		C881349A26E60DB70008CA8A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C881349926E60DB70008CA8A /* BaseViewController.swift */; };
 		C8873FD526C679F5005B5874 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8873FD426C679F5005B5874 /* SettingsViewController.swift */; };
@@ -105,7 +108,6 @@
 		884B26B4249DE6140028E6D1 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		886F61182478D2BC0074BB0A /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		886F611A2478D52E0074BB0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = WhiteCatShowImage/Resources/Info.plist; sourceTree = SOURCE_ROOT; };
-		886F61212478DF4E0074BB0A /* ExtensionUIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIApplication.swift; sourceTree = "<group>"; };
 		886F61252478E2250074BB0A /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
 		886F61272478E2F10074BB0A /* ExtensionDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDate.swift; sourceTree = "<group>"; };
 		886F612A2479113B0074BB0A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -132,6 +134,10 @@
 		C86ECBFC26CF576A004D7A74 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		C86ECBFD26CF576A004D7A74 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
 		C86ECC0026CF5D8D004D7A74 /* SettingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItem.swift; sourceTree = "<group>"; };
+		C8784B4F26E89CDA00C70360 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		C8784B5126E89CF200C70360 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		C8784B5326E89CFD00C70360 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		C8784B5526E89D5200C70360 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		C8785A7326CA131E0095D86E /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		C881349926E60DB70008CA8A /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		C8873FD426C679F5005B5874 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -269,7 +275,6 @@
 		886F611D2478DCE50074BB0A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				886F61212478DF4E0074BB0A /* ExtensionUIApplication.swift */,
 				886F61252478E2250074BB0A /* ExtensionUIView.swift */,
 				886F61272478E2F10074BB0A /* ExtensionDate.swift */,
 				883CD87424B98E6500017080 /* ExtensionString.swift */,
@@ -294,8 +299,9 @@
 			children = (
 				C86974DB26CCD87400D79842 /* Base */,
 				886F6129247911200074BB0A /* Main */,
-				C86C325226DF8CF4005D0657 /* Details */,
+				C8784B4E26E89CAC00C70360 /* Search */,
 				883CD88124B99E8A00017080 /* Menu */,
+				C86C325226DF8CF4005D0657 /* Details */,
 				C8873FD326C66FAB005B5874 /* Settings */,
 				883C9362264009E500C5BBE3 /* Language */,
 			);
@@ -424,6 +430,17 @@
 				C88DBEB826E06B3500772691 /* Details.storyboard */,
 			);
 			path = Details;
+			sourceTree = "<group>";
+		};
+		C8784B4E26E89CAC00C70360 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				C8784B5526E89D5200C70360 /* SearchCoordinator.swift */,
+				C8784B4F26E89CDA00C70360 /* SearchViewController.swift */,
+				C8784B5326E89CFD00C70360 /* SearchViewModel.swift */,
+				C8784B5126E89CF200C70360 /* Search.storyboard */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		C8785A7526CA13590095D86E /* Cell */ = {
@@ -587,6 +604,7 @@
 				C88DBEB926E06B3500772691 /* Details.storyboard in Resources */,
 				C88EE69526D39D1C0057E8FE /* RoleTableViewCell.xib in Resources */,
 				C86C325126DF6848005D0657 /* loading.json in Resources */,
+				C8784B5226E89CF200C70360 /* Search.storyboard in Resources */,
 				883DD0DE26341A52004A3EFD /* MenuTableViewCell.xib in Resources */,
 				886F612E247916700074BB0A /* .swiftlint.yml in Resources */,
 				C86ECBFF26CF576A004D7A74 /* SettingsTableViewCell.xib in Resources */,
@@ -715,12 +733,13 @@
 				C8785A7426CA131E0095D86E /* SettingsCoordinator.swift in Sources */,
 				C88DBEB726E06B2300772691 /* DetailsCoordinator.swift in Sources */,
 				C86974DA26CCD62C00D79842 /* AppCoordinator.swift in Sources */,
-				886F61222478DF4E0074BB0A /* ExtensionUIApplication.swift in Sources */,
 				C86974E226CCF7F200D79842 /* ViewControllerWithSideMenu.swift in Sources */,
+				C8784B5026E89CDA00C70360 /* SearchViewController.swift in Sources */,
 				886F61192478D2BC0074BB0A /* R.generated.swift in Sources */,
 				883CD88324B99F4C00017080 /* MenuViewController.swift in Sources */,
 				C881349A26E60DB70008CA8A /* BaseViewController.swift in Sources */,
 				C86C324C26DF6219005D0657 /* LoadingView.swift in Sources */,
+				C8784B5426E89CFD00C70360 /* SearchViewModel.swift in Sources */,
 				C8B7A0D226D783D8004CA71C /* NetworkManager.swift in Sources */,
 				883CD87524B98E6500017080 /* ExtensionString.swift in Sources */,
 				883DD0E72634243A004A3EFD /* TableViewCellProtocol.swift in Sources */,
@@ -730,6 +749,7 @@
 				C88EE69026D33C440057E8FE /* ExtensionUIAlertController.swift in Sources */,
 				883DD0DD26341A52004A3EFD /* MenuTableViewCell.swift in Sources */,
 				884B26B5249DE6140028E6D1 /* ViewModelType.swift in Sources */,
+				C8784B5626E89D5200C70360 /* SearchCoordinator.swift in Sources */,
 				C8873FD726C67A14005B5874 /* SettingsViewModel.swift in Sources */,
 				C86974DD26CCD87F00D79842 /* BaseNavigationController.swift in Sources */,
 				883CD87724B98F2600017080 /* SingletonVariable.swift in Sources */,

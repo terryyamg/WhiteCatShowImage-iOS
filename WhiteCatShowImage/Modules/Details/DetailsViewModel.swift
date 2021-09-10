@@ -19,7 +19,7 @@ class DetailsViewModel: ViewModel, ViewModelType {
 
     struct Output {
         let todoUrlList: Observable<[String]>
-        let isLoading: PublishSubject<Void>
+        let hiddenLoading: PublishSubject<Void>
     }
     
     // MARK: Private
@@ -109,6 +109,6 @@ class DetailsViewModel: ViewModel, ViewModelType {
         }).disposed(by: disposeBag)
         
         return Output(todoUrlList: imageUrlList.asObservable(),
-                      isLoading: loading)
+                      hiddenLoading: loading)
     }
 }

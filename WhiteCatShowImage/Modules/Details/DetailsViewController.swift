@@ -46,7 +46,7 @@ class DetailsViewController: BaseViewController {
             })
             .disposed(by: disposeBag)
         
-        outputs.isLoading
+        outputs.hiddenLoading
             .subscribe(onNext: { [weak self] _ in
                 self?.loadingView.animateHidden()
             })
