@@ -39,6 +39,9 @@ class DetailsViewModel: ViewModel, ViewModelType {
        return list
     }()
     
+    // Input
+    let didSelectImage = PublishSubject<String>()
+    
     init(networkManager: NetworkManagerProtocol, roleDataUrl: String) {
         self.networkManager = networkManager
         self.roleDataUrl = roleDataUrl

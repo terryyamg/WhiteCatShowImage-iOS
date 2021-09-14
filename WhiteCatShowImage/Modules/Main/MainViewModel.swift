@@ -34,8 +34,8 @@ class MainViewModel: ViewModel, ViewModelType {
     private let filterData = PublishSubject<(Career?, String?)>()
     // Input
     var didFilter: AnyObserver<(Career?, String?)>
-    let didSelectRole = BehaviorSubject<RoleData>(value: RoleData(name: "", image: "", career: .SW, toUrl: ""))
-    let didClickSearch = BehaviorSubject<[RoleData]>(value: [])
+    let didSelectRole = PublishSubject<RoleData>()
+    let didClickSearch = PublishSubject<[RoleData]>()
     
     init(networkManager: NetworkManagerProtocol) {
         self.networkManager = networkManager

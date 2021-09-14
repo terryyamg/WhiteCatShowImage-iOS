@@ -89,7 +89,7 @@ struct R: Rswift.Validatable {
   }
 
   #if os(iOS) || os(tvOS)
-  /// This `R.storyboard` struct is generated, and contains static references to 6 storyboards.
+  /// This `R.storyboard` struct is generated, and contains static references to 7 storyboards.
   struct storyboard {
     /// Storyboard `Details`.
     static let details = _R.storyboard.details()
@@ -103,6 +103,8 @@ struct R: Rswift.Validatable {
     static let search = _R.storyboard.search()
     /// Storyboard `Settings`.
     static let settings = _R.storyboard.settings()
+    /// Storyboard `ZoomImage`.
+    static let zoomImage = _R.storyboard.zoomImage()
 
     #if os(iOS) || os(tvOS)
     /// `UIStoryboard(name: "Details", bundle: ...)`
@@ -143,6 +145,13 @@ struct R: Rswift.Validatable {
     /// `UIStoryboard(name: "Settings", bundle: ...)`
     static func settings(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.settings)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIStoryboard(name: "ZoomImage", bundle: ...)`
+    static func zoomImage(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.zoomImage)
     }
     #endif
 
@@ -750,6 +759,9 @@ struct _R: Rswift.Validatable {
       #if os(iOS) || os(tvOS)
       try settings.validate()
       #endif
+      #if os(iOS) || os(tvOS)
+      try zoomImage.validate()
+      #endif
     }
 
     #if os(iOS) || os(tvOS)
@@ -866,6 +878,26 @@ struct _R: Rswift.Validatable {
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
         if _R.storyboard.settings().settingsViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'settingsViewController' could not be loaded from storyboard 'Settings' as 'SettingsViewController'.") }
+      }
+
+      fileprivate init() {}
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    struct zoomImage: Rswift.StoryboardResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "ZoomImage"
+      let zoomImageViewController = StoryboardViewControllerResource<ZoomImageViewController>(identifier: "ZoomImageViewController")
+
+      func zoomImageViewController(_: Void = ()) -> ZoomImageViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: zoomImageViewController)
+      }
+
+      static func validate() throws {
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+        if _R.storyboard.zoomImage().zoomImageViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'zoomImageViewController' could not be loaded from storyboard 'ZoomImage' as 'ZoomImageViewController'.") }
       }
 
       fileprivate init() {}

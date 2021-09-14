@@ -6,10 +6,12 @@
 //  Copyright © 2021 楊鎮齊. All rights reserved.
 //
 
-import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
 
 class DetailsCoordinator {
+    private let disposeBag = DisposeBag()
     private let viewModel: DetailsViewModel
     
     init(viewModel: DetailsViewModel) {

@@ -33,6 +33,16 @@ class MainCoordinator: BaseCoordinator, CoordinatorDependency {
                                                  roleDataUrl: roleData.toUrl)
                 let coordinator = DetailsCoordinator(viewModel: viewModel)
                 coordinator.start(vc)
+                
+                // 點選圖片 > 進入縮放圖片
+                viewModel.didSelectImage
+                    .subscribe(onNext: { imageString in
+                        guard let vc = self.topViewController() else { return }
+                        let viewModel = ZoomImageViewModel(imageString: imageString)
+                        let coordinator = ZoomImageCoordinator(viewModel: viewModel)
+                        coordinator.start(vc)
+                    })
+                    .disposed(by: self.disposeBag)
             })
             .disposed(by: disposeBag)
         
@@ -53,3 +63,5 @@ extension MainCoordinator: SearchDelegate {
         viewModel.didFilter.onNext((nil, text))
     }
 }
+
+extension MainCoordinator: TopViewControllerProtocol {}

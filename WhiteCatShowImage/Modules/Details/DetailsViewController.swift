@@ -69,11 +69,8 @@ class DetailsViewController: BaseViewController {
     }
     
     private func synchronizeScrollPager(at index: Int, with pagerView: FSPagerView) {
-        if pagerView == viewBottomPager {
-            viewImagePager.scrollToItem(at: index, animated: true)
-        } else {
-            viewBottomPager.scrollToItem(at: index, animated: true)
-        }
+        viewImagePager.scrollToItem(at: index, animated: true)
+        viewBottomPager.scrollToItem(at: index, animated: true)
     }
     
 }
@@ -102,13 +99,18 @@ extension DetailsViewController: FSPagerViewDataSource, FSPagerViewDelegate {
                                             cell.imageView?.image = R.image.fail()
                                         }
                                     })
-        cell.imageView?.contentMode = .scaleAspectFill
+        cell.imageView?.contentMode = .scaleAspectFit
         cell.imageView?.clipsToBounds = true
         return cell
     }
     
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
         pagerView.deselectItem(at: index, animated: true)
+        if pagerView == self.viewImagePager {
+            guard let viewModel = viewModel as? DetailsViewModel else { return }
+            viewModel.didSelectImage.onNext(viewModel.images[index])
+            return
+        }
         synchronizeScrollPager(at: index, with: pagerView)
     }
     
