@@ -8,14 +8,17 @@
 
 import UIKit
 import Kingfisher
+import LTMorphingLabel
 
 class RoleTableViewCell: UITableViewCell, TableViewCellProtocol {
     
     @IBOutlet weak var ivRole: UIImageView!
-    @IBOutlet weak var labRole: UILabel!
+    @IBOutlet weak var labRole: LTMorphingLabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        labRole.morphingEffect = .sparkle
+        labRole.morphingDuration = 1.0
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

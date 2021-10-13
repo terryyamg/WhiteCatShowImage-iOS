@@ -27,7 +27,7 @@ target 'WhiteCatShowImage' do
   pod 'SwiftSoup' # https://github.com/scinfu/SwiftSoup
 
   # UI
-  pod 'Hero' # https://github.com/HeroTransitions/Hero
+  pod 'LTMorphingLabel' # https://github.com/lexrus/LTMorphingLabel
   pod 'lottie-ios' # https://github.com/airbnb/lottie-ios
   pod 'SideMenu', '~> 6.0' # https://github.com/jonkykong/SideMenu
 

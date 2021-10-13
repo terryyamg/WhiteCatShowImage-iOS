@@ -21,8 +21,13 @@ class ViewControllerWithSideMenu: BaseViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet.indent"), style: .plain, target: self, action: #selector(menuClicked))
         navigationItem.leftBarButtonItem?.accessibilityIdentifier = "menuButton"
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: nil)
-        navigationItem.rightBarButtonItem?.accessibilityIdentifier = "searchButton"
+        if #available(iOS 15, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = R.color.main_color()
+            navigationItem.standardAppearance = appearance
+            navigationItem.scrollEdgeAppearance = navigationItem.standardAppearance
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

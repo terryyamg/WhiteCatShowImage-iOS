@@ -35,9 +35,9 @@ class MenuCoordinator: BaseCoordinator, CoordinatorDependency {
     }
 
     func selectScreen(_ screen: Screen) {
+        removeChildCoordinators()
         switch screen {
         case .main:
-            removeChildCoordinators()
             let viewModel = MainViewModel(networkManager: dependency!.networkManager)
             let coordinator = MainCoordinator(viewModel: viewModel)
             coordinator.dependency = dependency
@@ -46,13 +46,16 @@ class MenuCoordinator: BaseCoordinator, CoordinatorDependency {
         case .history:
             break
         case .gameEvent:
-            break
+            let viewModel = GameEventViewModel(networkManager: dependency!.networkManager)
+            let coordinator = GameEventCoordinator(viewModel: viewModel)
+            coordinator.dependency = dependency
+            coordinator.navigationController = navigationController
+            start(coordinator: coordinator)
         case .phoneWallpaper:
             break
         case .sixthCharacter:
             break
         case .settings:
-            removeChildCoordinators()
             let coordinator = SettingsCoordinator(viewModel: SettingsViewModel())
             coordinator.navigationController = navigationController
             start(coordinator: coordinator)

@@ -89,10 +89,12 @@ struct R: Rswift.Validatable {
   }
 
   #if os(iOS) || os(tvOS)
-  /// This `R.storyboard` struct is generated, and contains static references to 7 storyboards.
+  /// This `R.storyboard` struct is generated, and contains static references to 8 storyboards.
   struct storyboard {
     /// Storyboard `Details`.
     static let details = _R.storyboard.details()
+    /// Storyboard `GameEvent`.
+    static let gameEvent = _R.storyboard.gameEvent()
     /// Storyboard `LaunchScreen`.
     static let launchScreen = _R.storyboard.launchScreen()
     /// Storyboard `Main`.
@@ -110,6 +112,13 @@ struct R: Rswift.Validatable {
     /// `UIStoryboard(name: "Details", bundle: ...)`
     static func details(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.details)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIStoryboard(name: "GameEvent", bundle: ...)`
+    static func gameEvent(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.gameEvent)
     }
     #endif
 
@@ -348,8 +357,10 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 4 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 5 nibs.
   struct nib {
+    /// Nib `GameEventTableViewCell`.
+    static let gameEventTableViewCell = _R.nib._GameEventTableViewCell()
     /// Nib `LoadingView`.
     static let loadingView = _R.nib._LoadingView()
     /// Nib `MenuTableViewCell`.
@@ -358,6 +369,14 @@ struct R: Rswift.Validatable {
     static let roleTableViewCell = _R.nib._RoleTableViewCell()
     /// Nib `SettingsTableViewCell`.
     static let settingsTableViewCell = _R.nib._SettingsTableViewCell()
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "GameEventTableViewCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.gameEventTableViewCell) instead")
+    static func gameEventTableViewCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.gameEventTableViewCell)
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UINib(name: "LoadingView", in: bundle)`
@@ -391,6 +410,10 @@ struct R: Rswift.Validatable {
     }
     #endif
 
+    static func gameEventTableViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> GameEventTableViewCell? {
+      return R.nib.gameEventTableViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? GameEventTableViewCell
+    }
+
     static func loadingView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
       return R.nib.loadingView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
@@ -410,8 +433,52 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.string` struct is generated, and contains static references to 1 localization tables.
+  /// This `R.string` struct is generated, and contains static references to 2 localization tables.
   struct string {
+    /// This `R.string.infoPlist` struct is generated, and contains static references to 2 localization keys.
+    struct infoPlist {
+      /// en translation: Colopl Rune Story Figure For 白猫プロジェクト
+      ///
+      /// Locales: en, ja, ko, zh-Hant
+      static let cfBundleDisplayName = Rswift.StringResource(key: "CFBundleDisplayName", tableName: "InfoPlist", bundle: R.hostingBundle, locales: ["en", "ja", "ko", "zh-Hant"], comment: nil)
+      /// en translation: Colopl Rune Story Figure For 白猫プロジェクト
+      ///
+      /// Locales: en, ja, ko, zh-Hant
+      static let cfBundleName = Rswift.StringResource(key: "CFBundleName", tableName: "InfoPlist", bundle: R.hostingBundle, locales: ["en", "ja", "ko", "zh-Hant"], comment: nil)
+
+      /// en translation: Colopl Rune Story Figure For 白猫プロジェクト
+      ///
+      /// Locales: en, ja, ko, zh-Hant
+      static func cfBundleDisplayName(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("CFBundleDisplayName", tableName: "InfoPlist", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "InfoPlist", preferredLanguages: preferredLanguages) else {
+          return "CFBundleDisplayName"
+        }
+
+        return NSLocalizedString("CFBundleDisplayName", tableName: "InfoPlist", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Colopl Rune Story Figure For 白猫プロジェクト
+      ///
+      /// Locales: en, ja, ko, zh-Hant
+      static func cfBundleName(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("CFBundleName", tableName: "InfoPlist", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "InfoPlist", preferredLanguages: preferredLanguages) else {
+          return "CFBundleName"
+        }
+
+        return NSLocalizedString("CFBundleName", tableName: "InfoPlist", bundle: bundle, comment: "")
+      }
+
+      fileprivate init() {}
+    }
+
     /// This `R.string.localizable` struct is generated, and contains static references to 13 localization keys.
     struct localizable {
       /// en translation: 6th All Character(More pictures)
@@ -690,6 +757,17 @@ struct _R: Rswift.Validatable {
 
   #if os(iOS) || os(tvOS)
   struct nib {
+    struct _GameEventTableViewCell: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "GameEventTableViewCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> GameEventTableViewCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? GameEventTableViewCell
+      }
+
+      fileprivate init() {}
+    }
+
     struct _LoadingView: Rswift.NibResourceType {
       let bundle = R.hostingBundle
       let name = "LoadingView"
@@ -745,6 +823,9 @@ struct _R: Rswift.Validatable {
       try details.validate()
       #endif
       #if os(iOS) || os(tvOS)
+      try gameEvent.validate()
+      #endif
+      #if os(iOS) || os(tvOS)
       try launchScreen.validate()
       #endif
       #if os(iOS) || os(tvOS)
@@ -778,6 +859,26 @@ struct _R: Rswift.Validatable {
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
         if _R.storyboard.details().detailsViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'detailsViewController' could not be loaded from storyboard 'Details' as 'DetailsViewController'.") }
+      }
+
+      fileprivate init() {}
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    struct gameEvent: Rswift.StoryboardResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let gameEventViewController = StoryboardViewControllerResource<GameEventViewController>(identifier: "GameEventViewController")
+      let name = "GameEvent"
+
+      func gameEventViewController(_: Void = ()) -> GameEventViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: gameEventViewController)
+      }
+
+      static func validate() throws {
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+        if _R.storyboard.gameEvent().gameEventViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'gameEventViewController' could not be loaded from storyboard 'GameEvent' as 'GameEventViewController'.") }
       }
 
       fileprivate init() {}

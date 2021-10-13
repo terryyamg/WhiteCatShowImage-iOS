@@ -38,10 +38,16 @@ class MainViewController: ViewControllerWithSideMenu {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        initRightBarButton()
         initView()
         initTableView()
         bindViewModel()
         initBottomPager()
+    }
+    
+    func initRightBarButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: nil)
+        navigationItem.rightBarButtonItem?.accessibilityIdentifier = "searchButton"
     }
     
     func initTableView() {

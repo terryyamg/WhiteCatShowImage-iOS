@@ -56,11 +56,15 @@
 		C8784B5426E89CFD00C70360 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8784B5326E89CFD00C70360 /* SearchViewModel.swift */; };
 		C8784B5626E89D5200C70360 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8784B5526E89D5200C70360 /* SearchCoordinator.swift */; };
 		C8785A7426CA131E0095D86E /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8785A7326CA131E0095D86E /* SettingsCoordinator.swift */; };
+		C87CD4F52702FAEE001D7F4A /* EventData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87CD4F42702FAEE001D7F4A /* EventData.swift */; };
+		C87D126126FDAF2B00CD015D /* GameEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87D125F26FDAF2B00CD015D /* GameEventTableViewCell.swift */; };
+		C87D126226FDAF2B00CD015D /* GameEventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C87D126026FDAF2B00CD015D /* GameEventTableViewCell.xib */; };
 		C881349A26E60DB70008CA8A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C881349926E60DB70008CA8A /* BaseViewController.swift */; };
 		C88711C626EF4540006AB0F6 /* ZoomImage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C88711C526EF4540006AB0F6 /* ZoomImage.storyboard */; };
 		C8873FD526C679F5005B5874 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8873FD426C679F5005B5874 /* SettingsViewController.swift */; };
 		C8873FD726C67A14005B5874 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8873FD626C67A14005B5874 /* SettingsViewModel.swift */; };
 		C8873FD926C67C9A005B5874 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8873FD826C67C9A005B5874 /* Settings.storyboard */; };
+		C88BCF8626F34E7B00BB3FC8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C88BCF8826F34E7B00BB3FC8 /* InfoPlist.strings */; };
 		C88DBEB326E069EA00772691 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88DBEB226E069EA00772691 /* DetailsViewController.swift */; };
 		C88DBEB526E06A0700772691 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88DBEB426E06A0700772691 /* DetailsViewModel.swift */; };
 		C88DBEB726E06B2300772691 /* DetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88DBEB626E06B2300772691 /* DetailsCoordinator.swift */; };
@@ -69,6 +73,10 @@
 		C88EE69426D39D1C0057E8FE /* RoleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88EE69226D39D1C0057E8FE /* RoleTableViewCell.swift */; };
 		C88EE69526D39D1C0057E8FE /* RoleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C88EE69326D39D1C0057E8FE /* RoleTableViewCell.xib */; };
 		C88EE69726D39E720057E8FE /* RoleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88EE69626D39E720057E8FE /* RoleData.swift */; };
+		C89B69BB26F1C988006DBA1B /* GameEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89B69BA26F1C988006DBA1B /* GameEventViewController.swift */; };
+		C89B69BD26F1C993006DBA1B /* GameEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C89B69BC26F1C993006DBA1B /* GameEvent.storyboard */; };
+		C89B69BF26F1C9AB006DBA1B /* GameEventCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89B69BE26F1C9AB006DBA1B /* GameEventCoordinator.swift */; };
+		C89B69C126F1C9B7006DBA1B /* GameEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89B69C026F1C9B7006DBA1B /* GameEventViewModel.swift */; };
 		C8B7A0D226D783D8004CA71C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B7A0D126D783D8004CA71C /* NetworkManager.swift */; };
 		C8B7A0D426D79171004CA71C /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B7A0D326D79171004CA71C /* AppDependency.swift */; };
 		D4292BA524EB85151B81D276 /* Pods_WhiteCatShowImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0A14F3816786229386C4DB /* Pods_WhiteCatShowImage.framework */; };
@@ -148,11 +156,18 @@
 		C8784B5326E89CFD00C70360 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		C8784B5526E89D5200C70360 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		C8785A7326CA131E0095D86E /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		C87CD4F42702FAEE001D7F4A /* EventData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventData.swift; sourceTree = "<group>"; };
+		C87D125F26FDAF2B00CD015D /* GameEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEventTableViewCell.swift; sourceTree = "<group>"; };
+		C87D126026FDAF2B00CD015D /* GameEventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameEventTableViewCell.xib; sourceTree = "<group>"; };
 		C881349926E60DB70008CA8A /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		C88711C526EF4540006AB0F6 /* ZoomImage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ZoomImage.storyboard; sourceTree = "<group>"; };
 		C8873FD426C679F5005B5874 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C8873FD626C67A14005B5874 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		C8873FD826C67C9A005B5874 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		C88BCF8726F34E7B00BB3FC8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C88BCF8A26F34E8100BB3FC8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C88BCF8B26F34E8200BB3FC8 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C88BCF8C26F34E9A00BB3FC8 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		C88DBEB226E069EA00772691 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		C88DBEB426E06A0700772691 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		C88DBEB626E06B2300772691 /* DetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCoordinator.swift; sourceTree = "<group>"; };
@@ -161,6 +176,10 @@
 		C88EE69226D39D1C0057E8FE /* RoleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleTableViewCell.swift; sourceTree = "<group>"; };
 		C88EE69326D39D1C0057E8FE /* RoleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoleTableViewCell.xib; sourceTree = "<group>"; };
 		C88EE69626D39E720057E8FE /* RoleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleData.swift; sourceTree = "<group>"; };
+		C89B69BA26F1C988006DBA1B /* GameEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEventViewController.swift; sourceTree = "<group>"; };
+		C89B69BC26F1C993006DBA1B /* GameEvent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GameEvent.storyboard; sourceTree = "<group>"; };
+		C89B69BE26F1C9AB006DBA1B /* GameEventCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEventCoordinator.swift; sourceTree = "<group>"; };
+		C89B69C026F1C9B7006DBA1B /* GameEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEventViewModel.swift; sourceTree = "<group>"; };
 		C8B7A0D126D783D8004CA71C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		C8B7A0D326D79171004CA71C /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
 		CE0A14F3816786229386C4DB /* Pods_WhiteCatShowImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhiteCatShowImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -268,6 +287,7 @@
 				886F611A2478D52E0074BB0A /* Info.plist */,
 				886F61182478D2BC0074BB0A /* R.generated.swift */,
 				886F612D247916700074BB0A /* .swiftlint.yml */,
+				C88BCF8826F34E7B00BB3FC8 /* InfoPlist.strings */,
 				883CD87C24B9925F00017080 /* Localizable.strings */,
 			);
 			path = Resources;
@@ -301,6 +321,7 @@
 				883DD0EB26342C92004A3EFD /* MenuItem.swift */,
 				C86ECC0026CF5D8D004D7A74 /* SettingItem.swift */,
 				C88EE69626D39E720057E8FE /* RoleData.swift */,
+				C87CD4F42702FAEE001D7F4A /* EventData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -448,6 +469,11 @@
 		C873B94226F0B09000D2443C /* Game Event */ = {
 			isa = PBXGroup;
 			children = (
+				C89B69C226F1D19B006DBA1B /* Cell */,
+				C89B69BE26F1C9AB006DBA1B /* GameEventCoordinator.swift */,
+				C89B69BA26F1C988006DBA1B /* GameEventViewController.swift */,
+				C89B69C026F1C9B7006DBA1B /* GameEventViewModel.swift */,
+				C89B69BC26F1C993006DBA1B /* GameEvent.storyboard */,
 			);
 			path = "Game Event";
 			sourceTree = "<group>";
@@ -500,6 +526,15 @@
 			children = (
 				C88EE69226D39D1C0057E8FE /* RoleTableViewCell.swift */,
 				C88EE69326D39D1C0057E8FE /* RoleTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C89B69C226F1D19B006DBA1B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C87D125F26FDAF2B00CD015D /* GameEventTableViewCell.swift */,
+				C87D126026FDAF2B00CD015D /* GameEventTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -636,8 +671,10 @@
 				C88EE69526D39D1C0057E8FE /* RoleTableViewCell.xib in Resources */,
 				C86C325126DF6848005D0657 /* loading.json in Resources */,
 				C8784B5226E89CF200C70360 /* Search.storyboard in Resources */,
+				C88BCF8626F34E7B00BB3FC8 /* InfoPlist.strings in Resources */,
 				883DD0DE26341A52004A3EFD /* MenuTableViewCell.xib in Resources */,
 				C88711C626EF4540006AB0F6 /* ZoomImage.storyboard in Resources */,
+				C89B69BD26F1C993006DBA1B /* GameEvent.storyboard in Resources */,
 				886F612E247916700074BB0A /* .swiftlint.yml in Resources */,
 				C86ECBFF26CF576A004D7A74 /* SettingsTableViewCell.xib in Resources */,
 				C8873FD926C67C9A005B5874 /* Settings.storyboard in Resources */,
@@ -645,6 +682,7 @@
 				88309567262BEE7D00AD40B0 /* Menu.storyboard in Resources */,
 				889507432311482100570907 /* Assets.xcassets in Resources */,
 				C86C324E26DF630C005D0657 /* LoadingView.xib in Resources */,
+				C87D126226FDAF2B00CD015D /* GameEventTableViewCell.xib in Resources */,
 				889507412311481F00570907 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -748,9 +786,12 @@
 			files = (
 				C8B7A0D426D79171004CA71C /* AppDependency.swift in Sources */,
 				8830955C262BE1A200AD40B0 /* MainCoordinator.swift in Sources */,
+				C87CD4F52702FAEE001D7F4A /* EventData.swift in Sources */,
 				886F61262478E2250074BB0A /* ExtensionUIView.swift in Sources */,
 				C86ECBFE26CF576A004D7A74 /* SettingsTableViewCell.swift in Sources */,
 				C873B93D26F07F9600D2443C /* ZoomImageViewModel.swift in Sources */,
+				C89B69BF26F1C9AB006DBA1B /* GameEventCoordinator.swift in Sources */,
+				C89B69C126F1C9B7006DBA1B /* GameEventViewModel.swift in Sources */,
 				C88DBEB326E069EA00772691 /* DetailsViewController.swift in Sources */,
 				C8873FD526C679F5005B5874 /* SettingsViewController.swift in Sources */,
 				883CD88524B99F5900017080 /* MenuViewModel.swift in Sources */,
@@ -766,6 +807,7 @@
 				C873B93F26F07FAD00D2443C /* ZoomImageCoordinator.swift in Sources */,
 				C8785A7426CA131E0095D86E /* SettingsCoordinator.swift in Sources */,
 				C88DBEB726E06B2300772691 /* DetailsCoordinator.swift in Sources */,
+				C87D126126FDAF2B00CD015D /* GameEventTableViewCell.swift in Sources */,
 				C86974DA26CCD62C00D79842 /* AppCoordinator.swift in Sources */,
 				C86974E226CCF7F200D79842 /* ViewControllerWithSideMenu.swift in Sources */,
 				C8784B5026E89CDA00C70360 /* SearchViewController.swift in Sources */,
@@ -779,6 +821,7 @@
 				883CD87524B98E6500017080 /* ExtensionString.swift in Sources */,
 				883DD0E72634243A004A3EFD /* TableViewCellProtocol.swift in Sources */,
 				C86ECC0126CF5D8D004D7A74 /* SettingItem.swift in Sources */,
+				C89B69BB26F1C988006DBA1B /* GameEventViewController.swift in Sources */,
 				886F612B2479113B0074BB0A /* MainViewModel.swift in Sources */,
 				C88EE69426D39D1C0057E8FE /* RoleTableViewCell.swift in Sources */,
 				C88EE69026D33C440057E8FE /* ExtensionUIAlertController.swift in Sources */,
@@ -850,6 +893,17 @@
 				889507452311482100570907 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		C88BCF8826F34E7B00BB3FC8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C88BCF8726F34E7B00BB3FC8 /* en */,
+				C88BCF8A26F34E8100BB3FC8 /* ja */,
+				C88BCF8B26F34E8200BB3FC8 /* ko */,
+				C88BCF8C26F34E9A00BB3FC8 /* zh-Hant */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
