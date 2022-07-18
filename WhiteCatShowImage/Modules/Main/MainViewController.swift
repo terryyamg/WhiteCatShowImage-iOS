@@ -25,7 +25,7 @@ class MainViewController: ViewControllerWithSideMenu {
     let headerRefreshTrigger = PublishSubject<Void>()
     let disposeBag = DisposeBag()
     var viewModel: ViewModel?
-    var listCareer: OrderedSet<UIImage> = [#imageLiteral(resourceName: "all"), #imageLiteral(resourceName: "ic_sw.pdf"), #imageLiteral(resourceName: "ic_nac"), #imageLiteral(resourceName: "ic_war"), #imageLiteral(resourceName: "ic_lan"), #imageLiteral(resourceName: "ic_ar"), #imageLiteral(resourceName: "ic_mag"), #imageLiteral(resourceName: "ic_tsw"), #imageLiteral(resourceName: "ic_dr"), #imageLiteral(resourceName: "ic_var"), #imageLiteral(resourceName: "ic_bs"), #imageLiteral(resourceName: "ic_sab")]
+    var listCareer: OrderedSet<UIImage> = [#imageLiteral(resourceName: "all"), #imageLiteral(resourceName: "ic_sw.pdf"), #imageLiteral(resourceName: "ic_nac"), #imageLiteral(resourceName: "ic_war"), #imageLiteral(resourceName: "ic_lan"), #imageLiteral(resourceName: "ic_ar"), #imageLiteral(resourceName: "ic_mag"), #imageLiteral(resourceName: "ic_tsw"), #imageLiteral(resourceName: "ic_dr"), #imageLiteral(resourceName: "ic_var"), #imageLiteral(resourceName: "ic_bs"), #imageLiteral(resourceName: "ic_sab"), #imageLiteral(resourceName: "ic_chain")]
 
     func initBottomPager() {
         viewBottomPager.dataSource = self

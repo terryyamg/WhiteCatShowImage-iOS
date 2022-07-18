@@ -19,9 +19,10 @@ import Foundation
 * "VAR"  變
 * "BS"   大劍
 * "SAB"  輝劍
+* "CHAIN" 鎖鏈
 * */
 enum Career: CaseIterable {
-    case SW, NAC, WAR, LAN, AR, MAG, TSW, DR, VAR, BS, SAB
+    case SW, NAC, WAR, LAN, AR, MAG, TSW, DR, VAR, BS, SAB, CHAIN
     
     var lowercaseString: String {
         switch self {
@@ -36,6 +37,7 @@ enum Career: CaseIterable {
         case .VAR: return "var"
         case .BS: return "bs"
         case .SAB: return "sab"
+        case .CHAIN: return "chain"
         }
     }
 }
