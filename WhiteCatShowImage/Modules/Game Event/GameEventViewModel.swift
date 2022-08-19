@@ -76,7 +76,7 @@ class GameEventViewModel: ViewModel, ViewModelType {
                                                                 completionHandler: { html in
                                 do {
                                     let docNext: Document = try SwiftSoup.parse(html)
-                                    let elementsNext = try docNext.select("li.catGameEvent")
+                                    let elementsNext = try docNext.select("ul.entryList").select("li.entry")
                                     try elementsNext.forEach { item in
                                         let imageUrl = try self.urlColopl + item.select("img").attr("src")
                                         // 跳過沒用的url
@@ -84,17 +84,21 @@ class GameEventViewModel: ViewModel, ViewModelType {
                                             return
                                         }
                                         var detailUrl = ""
-                                        let urlColopl = try item.select("a.fade").attr("href")
+                                        let urlColopl = try item.select("a").attr("href")
                                         // 部分網頁會已經存在https
                                         if urlColopl.contains("https") {
                                             detailUrl = urlColopl
                                         } else {
-                                            detailUrl = try self.urlColopl + item.select("a.fade").attr("href")
+                                            detailUrl = self.urlColopl + urlColopl
                                         }
                                         
-                                        let div = try item.select("div.textArea")
-                                        let title = try div.select("p.title").text()
-                                        let date = try div.select("p.date").text()
+                                        let div = try item.select("div.textWrap")
+                                        let title = try div.select("h3.entryTitle").text()
+                                        let date = try String(div.select("p.date").text().prefix(10))
+                                        if try !div.select("p.date").select("span").text().contains("GAME EVENT") {
+                                            return
+                                        }
+
                                         // 比 2018.03.10 更早的跳過
                                         if let isEarlier = self.isEarlierThanEventDate(date, compareDate: "2018.03.10"), isEarlier {
                                             return
