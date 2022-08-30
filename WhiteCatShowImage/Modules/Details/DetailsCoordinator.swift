@@ -12,9 +12,9 @@ import RxCocoa
 
 class DetailsCoordinator {
     private let disposeBag = DisposeBag()
-    private let viewModel: DetailsViewModel
+    private let viewModel: ViewModel
     
-    init(viewModel: DetailsViewModel) {
+    init(viewModel: ViewModel) {
         self.viewModel = viewModel
     }
 

@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import RxSwift
 
 class GameEventCoordinator: BaseCoordinator, CoordinatorDependency {
+    private let disposeBag = DisposeBag()
     private let viewModel: GameEventViewModel
     
     var dependency: AppDependency?
@@ -21,5 +23,29 @@ class GameEventCoordinator: BaseCoordinator, CoordinatorDependency {
         guard let vc = R.storyboard.gameEvent.gameEventViewController() else { return }
         vc.viewModel = viewModel
         navigationController.viewControllers = [vc]
+        
+        viewModel.didSelectEvent
+            .subscribe(onNext: { [weak self] eventData in
+                guard let self = self else { return }
+                let viewModel = DetailsViewModel(networkManager: self.dependency!.networkManager,
+                                                 dataUrl: eventData.detailUrl,
+                                                 type: .gameEventDetails)
+                let coordinator = DetailsCoordinator(viewModel: viewModel)
+                coordinator.start(vc)
+                
+                // 點選圖片 > 進入縮放圖片
+                viewModel.didSelectImage
+                    .subscribe(onNext: { imageString in
+                        guard let vc = self.topViewController() else { return }
+                        let viewModel = ZoomImageViewModel(imageString: imageString)
+                        let coordinator = ZoomImageCoordinator(viewModel: viewModel)
+                        coordinator.start(vc)
+                    })
+                    .disposed(by: self.disposeBag)
+            })
+            .disposed(by: disposeBag)
+        
     }
 }
+
+extension GameEventCoordinator: TopViewControllerProtocol {}

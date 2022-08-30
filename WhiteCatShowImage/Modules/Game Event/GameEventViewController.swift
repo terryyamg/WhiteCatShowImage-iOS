@@ -40,6 +40,11 @@ class GameEventViewController: ViewControllerWithSideMenu {
                 cell.setupInfo(with: item)
             }
             .disposed(by: disposeBag)
+        
+        outputs.selectedEvent.drive(onNext: { eventData in
+            viewModel.didSelectEvent.onNext(eventData)
+        })
+        .disposed(by: disposeBag)
     }
   
 }

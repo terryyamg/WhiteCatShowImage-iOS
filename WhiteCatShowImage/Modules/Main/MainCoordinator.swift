@@ -30,7 +30,8 @@ class MainCoordinator: BaseCoordinator, CoordinatorDependency {
             .subscribe(onNext: { [weak self] roleData in
                 guard let self = self else { return }
                 let viewModel = DetailsViewModel(networkManager: self.dependency!.networkManager,
-                                                 roleDataUrl: roleData.toUrl)
+                                                 dataUrl: roleData.toUrl,
+                                                 type: .details)
                 let coordinator = DetailsCoordinator(viewModel: viewModel)
                 coordinator.start(vc)
                 

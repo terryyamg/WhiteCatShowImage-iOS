@@ -37,7 +37,7 @@ class DetailsViewController: BaseViewController {
         let outputs = viewModel.transform(input: inputs)
         
         outputs.todoUrlList
-            .asDriver(onErrorJustReturn: [])
+            .asDriver(onErrorJustReturn: [:])
             .drive(onNext: { [weak self] imageUrlList in
                 guard let self = self else { return }
                 
@@ -85,7 +85,7 @@ extension DetailsViewController: FSPagerViewDataSource, FSPagerViewDelegate {
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "FSPagerViewCell", at: index)
         guard let viewModel = viewModel as? DetailsViewModel else { return cell }
         cell.imageView?.kf.indicatorType = .activity
-        cell.imageView?.kf.setImage(with: URL(string: viewModel.images[index]),
+        cell.imageView?.kf.setImage(with: URL(string: viewModel.images.keys[index]),
                                     placeholder: R.image.search_image(),
                                     options: [
                                         .transition(.fade(1)),
@@ -101,6 +101,12 @@ extension DetailsViewController: FSPagerViewDataSource, FSPagerViewDelegate {
                                     })
         cell.imageView?.contentMode = .scaleAspectFit
         cell.imageView?.clipsToBounds = true
+        if pagerView == self.viewImagePager {
+            let text = viewModel.images.values[index]
+            if !text.isEmpty {
+                cell.textLabel?.text = text
+            }
+        }
         return cell
     }
     
@@ -108,7 +114,7 @@ extension DetailsViewController: FSPagerViewDataSource, FSPagerViewDelegate {
         pagerView.deselectItem(at: index, animated: true)
         if pagerView == self.viewImagePager {
             guard let viewModel = viewModel as? DetailsViewModel else { return }
-            viewModel.didSelectImage.onNext(viewModel.images[index])
+            viewModel.didSelectImage.onNext(viewModel.images.keys[index])
             return
         }
         synchronizeScrollPager(at: index, with: pagerView)

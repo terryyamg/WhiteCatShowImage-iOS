@@ -22,7 +22,6 @@ class GameEventViewModel: ViewModel, ViewModelType {
         let selectedEvent: Driver<EventData>
     }
     // MARK: Private
-    private let urlColopl = "https://colopl.co.jp/"
     private let networkManager: NetworkManagerProtocol?
     private var items = BehaviorRelay<[EventData]>(value: [])
     private var disposeBag: DisposeBag = DisposeBag()
@@ -41,6 +40,9 @@ class GameEventViewModel: ViewModel, ViewModelType {
         list.append("https://colopl.co.jp//shironekoproject/news_pub/img/2017/news_20171207004.jpg")
        return list
     }()
+    
+    // Input
+    let didSelectEvent = PublishSubject<EventData>()
     
     init(networkManager: NetworkManagerProtocol) {
         self.networkManager = networkManager

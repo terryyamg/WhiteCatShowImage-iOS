@@ -13,4 +13,6 @@ import RxCocoa
 class ViewModel: NSObject {
 
     let loading = PublishSubject<Void>()
+    
+    let urlColopl = "https://colopl.co.jp/"
 }
