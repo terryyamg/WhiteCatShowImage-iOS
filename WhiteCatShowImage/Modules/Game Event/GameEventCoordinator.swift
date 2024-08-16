@@ -28,7 +28,7 @@ class GameEventCoordinator: BaseCoordinator, CoordinatorDependency {
             .subscribe(onNext: { [weak self] eventData in
                 guard let self = self else { return }
                 let viewModel = DetailsViewModel(networkManager: self.dependency!.networkManager,
-                                                 dataUrl: eventData.detailUrl,
+                                                 detailData: eventData,
                                                  type: .gameEventDetails)
                 let coordinator = DetailsCoordinator(viewModel: viewModel)
                 coordinator.start(vc)

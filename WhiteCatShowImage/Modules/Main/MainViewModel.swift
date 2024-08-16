@@ -63,7 +63,7 @@ class MainViewModel: ViewModel, ViewModelType {
                                 let roleData = RoleData(name: name,
                                                         image: image,
                                                         career: career,
-                                                        toUrl: toUrl)
+                                                        detailUrl: toUrl)
                                 roleList.append(roleData)
                             }
                         }

@@ -42,9 +42,9 @@ enum Career: CaseIterable {
     }
 }
 
-struct RoleData {
+struct RoleData: DetailUrlProtocol {
     var name: String
     var image: String
     var career: Career
-    var toUrl: String
+    var detailUrl: String = ""
 }

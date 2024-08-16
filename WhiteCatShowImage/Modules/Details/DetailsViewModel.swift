@@ -31,7 +31,7 @@ class DetailsViewModel: ViewModel, ViewModelType {
     private var imageUrlList = BehaviorRelay<OrderedDictionary<String, String>>(value: [:])
     private var disposeBag: DisposeBag = DisposeBag()
     private let networkManager: NetworkManagerProtocol?
-    private let dataUrl: String?
+    private let detailData: DetailUrlProtocol?
     private var type: DetailModelType = .details
     var images: OrderedDictionary<String, String> = [:]
     
@@ -48,17 +48,17 @@ class DetailsViewModel: ViewModel, ViewModelType {
     // Input
     let didSelectImage = PublishSubject<String>()
     
-    init(networkManager: NetworkManagerProtocol, dataUrl: String, type: DetailModelType) {
+    init(networkManager: NetworkManagerProtocol, detailData: DetailUrlProtocol, type: DetailModelType) {
         self.networkManager = networkManager
-        self.dataUrl = dataUrl
+        self.detailData = detailData
         self.type = type
     }
     
     func transform(input: Input) -> Output {
         input.refresh.flatMapLatest({ [weak self] () -> Observable<OrderedDictionary<String, String>> in
             guard let self = self else { return Observable.just([:]) }
-            guard let dataUrl = self.dataUrl else { return Observable.just([:]) }
-            return self.type == .details ? self.getRoleDetailsFromUrl(dataUrl: dataUrl) : self.getGameEventDetailsFromUrl(dataUrl: dataUrl)
+            guard let detailData = self.detailData else { return Observable.just([:]) }
+            return self.type == .details ? self.getRoleDetailsFromUrl(dataUrl: detailData.detailUrl) : self.getGameEventDetailsFromUrl(data: detailData)
         })
         .subscribe(onNext: { [weak self] imageUrlList in
             guard let self = self else { return }
@@ -127,8 +127,12 @@ class DetailsViewModel: ViewModel, ViewModelType {
         }
     }
     
-    private func getGameEventDetailsFromUrl(dataUrl: String) -> Observable<OrderedDictionary<String, String>> {
+    private func getGameEventDetailsFromUrl(data: DetailUrlProtocol) -> Observable<OrderedDictionary<String, String>> {
         return Observable.create { subscriber in
+            guard let eventData = data as? EventData else {
+                return Disposables.create()
+            }
+            let dataUrl = eventData.detailUrl
             self.networkManager?.getHtmlFromURL(urlString: dataUrl,
                                                 completionHandler: { html in
                 do {
@@ -200,5 +204,9 @@ class DetailsViewModel: ViewModel, ViewModelType {
             })
             return Disposables.create()
         }
+    }
+    
+    private func handleEventDetail(data: EventData) {
+        
     }
 }

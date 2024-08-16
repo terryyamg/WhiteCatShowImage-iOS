@@ -8,9 +8,13 @@
 
 import Foundation
 
-struct EventData {
+protocol DetailUrlProtocol {
+    var detailUrl: String { get set }
+}
+
+struct EventData: DetailUrlProtocol {
     var url: String
-    var detailUrl: String
+    var detailUrl: String = ""
     var title: String
     var date: String
 }
